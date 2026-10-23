@@ -1,0 +1,1690 @@
+/* SALUT pixel site. Pixel art lives in the canvases; all HTML text is clean Inter Tight (the
+   brand font), with JetBrains Mono only for small technical labels.
+   Two themes, all colours are custom properties: light (warm paper, dark text) and dark
+   (graphite, off-white text). The kit stage has its own sky colour, which the script moves
+   from the page colour through dusk to night before the salute. */
+
+:root,
+:root[data-theme="light"] {
+  --monitor-body: #2b2725;
+  --monitor-line: #0d0b0b;
+  --monitor-hi: #56595e;
+  --bg: #eeeae2;
+  --fg: #141310;
+  --fg-dim: #5c574e;
+  --surface: #e4dfd5;
+  --line: #d2cbbf;
+  --btn-bg: #141310;
+  --btn-fg: #f3efe7;
+  --btn-hover: #2d2b27;
+  --focus: #e0502a;
+  --accent: #e0502a;
+  /* Canvas colours, read by the scripts. */
+  --cast-shadow: rgba(20, 19, 16, 0.2);
+  --sky-0: #eeeae2;
+  --sky-1: #e2b081;
+  --sky-2: #5d82ad;
+  --sky-3: #14213d;
+  --sky-4: #0b0a09;
+  /* Speech bubbles: white box, dark pixel border. */
+  --bubble-bg: #fffdf8;
+  --bubble-ink: #141310;
+  --bubble-fg: #141310;
+  color-scheme: light;
+}
+
+:root[data-theme="dark"] {
+  --monitor-body: #30343a;
+  --monitor-line: #0b0a09;
+  --monitor-hi: #4d525a;
+  --bg: #151719;
+  --fg: #f3efe7;
+  --fg-dim: #aaa59b;
+  --surface: #1e2124;
+  --line: #2b2e31;
+  --btn-bg: #f3efe7;
+  --btn-fg: #141310;
+  --btn-hover: #ffffff;
+  --focus: #f7c531;
+  --cast-shadow: rgba(0, 0, 0, 0.42);
+  --sky-0: #151719;
+  --sky-1: #161b26;
+  --sky-2: #182035;
+  --sky-3: #14213d;
+  --sky-4: #0b0a09;
+  --bubble-bg: #101214;
+  --bubble-ink: #f3efe7;
+  --bubble-fg: #f3efe7;
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --monitor-body: #30343a;
+    --monitor-line: #0b0a09;
+    --monitor-hi: #4d525a;
+    --bg: #151719;
+    --fg: #f3efe7;
+    --fg-dim: #aaa59b;
+    --surface: #1e2124;
+    --line: #2b2e31;
+    --btn-bg: #f3efe7;
+    --btn-fg: #141310;
+    --btn-hover: #ffffff;
+    --focus: #f7c531;
+    --cast-shadow: rgba(0, 0, 0, 0.42);
+    --sky-0: #151719;
+    --sky-1: #161b26;
+    --sky-2: #182035;
+    --sky-3: #14213d;
+    --sky-4: #0b0a09;
+    --bubble-bg: #101214;
+    --bubble-ink: #f3efe7;
+    --bubble-fg: #f3efe7;
+    color-scheme: dark;
+  }
+}
+
+:root {
+  --gutter: 16px;
+  --radius: 12px;
+  --font: "Inter Tight", "Helvetica Neue", Arial, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+}
+
+@media (min-width: 700px) {
+  :root {
+    --gutter: 32px;
+  }
+}
+
+@media (min-width: 1100px) {
+  :root {
+    --gutter: 56px;
+  }
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+[hidden] {
+  display: none !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+html {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 400 17px/1.55 var(--font);
+  font-kerning: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (min-width: 700px) {
+  body {
+    font-size: 18px;
+  }
+}
+
+h1,
+h2,
+h3,
+p {
+  margin: 0;
+}
+
+a {
+  color: inherit;
+}
+
+::selection {
+  background: var(--accent);
+  color: #141310;
+}
+
+.pixel {
+  display: block;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: crisp-edges;
+  image-rendering: pixelated;
+}
+
+/* Small caps label, as on the portfolio site. */
+.label {
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--fg-dim);
+}
+
+/* Technical labels: checklist, captions, badge lines. */
+.mono {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.45;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+/* Facts that still wait for Gleb's confirmation: underlined only with ?review=1 in the URL. */
+.review .tbc {
+  text-decoration-line: underline;
+  text-decoration-style: dotted;
+  text-decoration-color: var(--accent);
+  text-decoration-thickness: 2px;
+  text-decoration-skip-ink: none;
+  text-underline-offset: 0.2em;
+}
+
+/* Highlighter, as on Vox: an accent band behind the words, swept in from the left once the page
+   loads, word after word in reading order (one marker stroke, so «для брендов» fills before
+   «и экспертов» on whatever line they fall). The text stays dark in both themes.
+   Gleb 23.10: «вместо подчеркивания сделаем в стиле vox выделение текста цветом»,
+   «сначала выделяешь для брендов, а потом и экспертов, не одновременно все». */
+.mark {
+  color: #141310;
+}
+
+.mark > span {
+  background-image: linear-gradient(var(--accent), var(--accent));
+  background-repeat: no-repeat;
+  background-position: 0 88%;
+  background-size: 100% 84%;
+  padding: 0 0.06em;
+  margin: 0 -0.06em;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.review .tbc.mark {
+  text-decoration: none;
+}
+
+/* One stroke that speeds up, as on Vox: progress = time^1.7 over the whole phrase (0.77 s after a
+   0.3 s wait), split by word length (4, 8 and 11 letters); each word's curve is its slice of that
+   stroke, so the marker crawls through «для» and runs through «экспертов».
+   Gleb 23.10: «с нелинейной скоростью ... вначале чуть помедленнее, потом чуть побыстрее.
+   Общую длительность сократи в полтора раза» (was 1.15 s linear after a 0.45 s wait). */
+@media (prefers-reduced-motion: no-preference) {
+  .mark > span {
+    animation: mark-sweep both;
+  }
+
+  .mark > span:nth-child(1) {
+    animation-delay: 0.3s;
+    animation-duration: 0.274s;
+    animation-timing-function: cubic-bezier(0.15, 0, 0.5, 0.15);
+  }
+
+  .mark > span:nth-child(2) {
+    animation-delay: 0.574s;
+    animation-duration: 0.249s;
+    animation-timing-function: cubic-bezier(0.45, 0.35, 0.75, 0.7);
+  }
+
+  .mark > span:nth-child(3) {
+    animation-delay: 0.823s;
+    animation-duration: 0.244s;
+    animation-timing-function: cubic-bezier(0.4, 0.33, 0.7, 0.67);
+  }
+}
+
+/* The word keeps the page's text colour until the band is under it (dark theme: light text),
+   then turns dark on the accent. */
+@keyframes mark-sweep {
+  from {
+    background-size: 0% 84%;
+    color: var(--fg);
+  }
+  60% {
+    color: var(--fg);
+  }
+  to {
+    background-size: 100% 84%;
+    color: #141310;
+  }
+}
+
+/* In the page for screen readers, not on screen (speech transcripts). */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  border: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.skip {
+  position: absolute;
+  z-index: 20;
+  left: 8px;
+  top: -200px;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font-weight: 500;
+}
+
+.skip:focus {
+  top: 8px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 52px;
+  padding: 0 26px;
+  border: 0;
+  border-radius: 999px;
+  background: var(--btn-bg);
+  color: var(--btn-fg);
+  font: 500 16px/1.1 var(--font);
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+  background: var(--btn-hover);
+}
+
+.btn:focus-visible,
+.topbar a:focus-visible,
+.theme-toggle:focus-visible,
+.footer a:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.btn--ghost {
+  background: transparent;
+  color: var(--fg);
+  box-shadow: inset 0 0 0 1.5px currentColor;
+}
+
+.btn--ghost:hover {
+  background: color-mix(in srgb, currentColor 10%, transparent);
+}
+
+.btn--small {
+  min-height: 44px;
+  padding: 0 20px;
+  font-size: 15px;
+}
+
+@media (min-width: 700px) {
+  .btn {
+    min-height: 56px;
+    padding: 0 30px;
+    font-size: 17px;
+  }
+
+  .btn--small {
+    min-height: 46px;
+    padding: 0 22px;
+    font-size: 16px;
+  }
+}
+
+/* Top bar */
+.topbar {
+  position: absolute;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 12px var(--gutter);
+}
+
+.topbar__logo {
+  margin-right: auto;
+  font-size: 19px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+}
+
+.topbar__link {
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.topbar__link:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Pixel sun and moon: the icon shows the theme the button switches to. */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  margin-right: -10px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: none;
+  color: var(--fg);
+  cursor: pointer;
+}
+
+.theme-toggle svg {
+  display: block;
+  width: 24px;
+  height: 24px;
+  shape-rendering: crispEdges;
+}
+
+.theme-toggle .icon-sun,
+:root[data-theme="dark"] .theme-toggle .icon-moon {
+  display: none;
+}
+
+:root[data-theme="dark"] .theme-toggle .icon-sun {
+  display: block;
+}
+
+@media (min-width: 700px) {
+  .topbar {
+    padding-top: 20px;
+  }
+
+  .topbar__logo {
+    font-size: 21px;
+  }
+
+  .theme-toggle svg {
+    width: 27px;
+    height: 27px;
+  }
+}
+
+/* Hero: the studio canvas fills the screen, the text sits beside or above it. */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.hero__scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.hero__scene canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.hero__text {
+  position: relative;
+  z-index: 1;
+  max-width: 36rem;
+  padding: 76px var(--gutter) 0;
+}
+
+h1 {
+  margin: 14px 0 18px;
+  font-size: clamp(32px, 3.6vw, 54px); /* a descriptive headline, longer than a slogan */
+  line-height: 1.04;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  text-wrap: balance;
+}
+
+h2 {
+  font-size: clamp(28px, 3.4vw, 48px);
+  line-height: 1.08;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-wrap: balance;
+}
+
+h3 {
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.lead {
+  margin: 0 0 28px;
+  max-width: 32em;
+  font-size: clamp(17px, 1.45vw, 21px);
+  line-height: 1.5;
+  color: var(--fg-dim);
+  text-wrap: pretty;
+}
+
+.hero__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  gap: 12px 14px;
+}
+
+/* The note sits right under the main button, so it is clear which button opens Telegram. */
+.hero__cta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.hero__note {
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--fg-dim);
+}
+
+.hero__hint {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  bottom: 16px;
+  text-align: center;
+  color: var(--fg-dim);
+}
+
+@media (min-width: 700px) {
+  .hero__text {
+    padding-top: 120px;
+  }
+}
+
+@media (min-width: 900px) {
+  .hero__text {
+    width: 44%;
+    max-width: 42rem;
+    margin: auto 0;
+    padding-top: 80px;
+    padding-bottom: 80px;
+  }
+}
+
+/* Team: Gleb and Sonya, each on their own tile with name, role and achievements under it;
+   side by side from 900px, stacked on phones (Gleb first). */
+.team {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 80px var(--gutter) 48px;
+}
+
+.team__head {
+  max-width: 40rem;
+  margin-bottom: 8px;
+}
+
+.team__lead {
+  margin-top: 12px;
+  color: var(--fg-dim);
+}
+
+.team__scene {
+  display: flex;
+  justify-content: center;
+  margin: 28px calc(-1 * var(--gutter)) 36px;
+  overflow: hidden;
+}
+
+.team__scene canvas {
+  flex: none;
+}
+
+.team__people {
+  display: grid;
+  gap: 48px;
+}
+
+.member__name {
+  font-size: 28px;
+  line-height: 1.1;
+}
+
+.member__role {
+  margin: 6px 0 16px;
+}
+
+.achievements {
+  display: grid;
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.ach {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: center;
+  padding: 12px 16px 12px 12px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.ach__badge {
+  width: 48px;
+  height: 48px;
+}
+
+.ach__title {
+  font-size: 17px;
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.ach__text {
+  margin-top: 4px;
+  color: var(--fg-dim);
+}
+
+@media (min-width: 700px) {
+  .team__scene {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  .member__name {
+    font-size: 32px;
+  }
+}
+
+@media (min-width: 900px) {
+  .team__people {
+    grid-template-columns: 1fr 1fr;
+    gap: 48px;
+    align-items: start;
+  }
+}
+
+/* Showreel: the video on a pixel screen on a mobile stand (a canvas at the site's art density), with
+   Gleb presenting it: beside the screen from 700px, under it on phones. */
+.reel {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 72px var(--gutter) 24px;
+}
+
+.reel__head {
+  max-width: 40rem;
+  margin-bottom: 28px;
+}
+
+.reel__lead {
+  margin-top: 12px;
+  color: var(--fg-dim);
+}
+
+.reel__stage {
+  position: relative;
+}
+
+.reel__presenter {
+  position: absolute;
+  z-index: 1;
+  left: 4px;
+  bottom: 0;
+}
+
+.reel__device {
+  position: relative;
+}
+
+@media (min-width: 700px) {
+  .reel__stage {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 12px;
+  }
+
+  /* Wide enough for Gleb's speech bubble, so it never covers the video. */
+  .reel__presenter {
+    position: relative;
+    left: auto;
+    display: flex;
+    flex: none;
+    justify-content: flex-end;
+    width: 18rem;
+  }
+
+  .reel__device {
+    flex: 0 1 840px;
+    min-width: 0;
+  }
+}
+
+.reel__frame {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.reel__screen {
+  position: absolute;
+  overflow: hidden;
+  background: #0b0a09;
+}
+
+.reel__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #0b0a09;
+  cursor: pointer;
+}
+
+.reel__play {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border: 0;
+  background: rgba(11, 10, 9, 0.28);
+  color: #f3efe7;
+  cursor: pointer;
+}
+
+.reel__play svg {
+  width: 42px;
+  height: 54px;
+  shape-rendering: crispEdges;
+}
+
+.reel__play:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: -6px;
+}
+
+.reel__controls {
+  display: flex;
+  justify-content: center;
+  margin-top: 18px;
+}
+
+/* Works under the showreel: one line each, the name in bold. */
+.works {
+  margin-top: 56px;
+}
+
+.works__title {
+  margin-bottom: 12px;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+.works__list {
+  display: grid;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.works__list li {
+  padding: 12px 0;
+  border-top: 1px solid var(--line);
+  color: var(--fg-dim);
+}
+
+.works__name {
+  color: var(--fg);
+  font-weight: 600;
+}
+
+@media (min-width: 900px) {
+  .works__list {
+    grid-template-columns: 1fr 1fr;
+    column-gap: 40px;
+  }
+}
+
+/* Kit: a tall runway with a sticky stage. Without JS it is a plain section.
+   --stage-bg and --stage-fg are moved by the script from day to night. */
+.kit {
+  position: relative;
+}
+
+.kit__stage {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--stage-bg, var(--bg));
+  color: var(--stage-fg, var(--fg));
+}
+
+.js .kit:not(.is-static) {
+  height: calc((var(--kit-runway, 400) + 100) * 1vh);
+  height: calc((var(--kit-runway, 400) + 100) * 1svh);
+}
+
+.js .kit:not(.is-static) .kit__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+}
+
+.kit-failed .kit {
+  height: auto !important;
+}
+
+.kit__scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.kit__canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.kit__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 34rem;
+  padding: 32px var(--gutter) 0;
+}
+
+.kit__sub {
+  margin-top: 10px;
+  color: var(--stage-fg-dim, var(--fg-dim));
+}
+
+.kit .label,
+.kit .mono {
+  color: var(--stage-fg-dim, var(--fg-dim));
+}
+
+.kit__inventory {
+  position: relative;
+  z-index: 1;
+  padding: 16px var(--gutter);
+}
+
+.kit__list {
+  margin: 10px 0 0;
+  padding: 0;
+  list-style: none;
+  color: var(--stage-fg-dim, var(--fg-dim));
+}
+
+.kit__list li::before {
+  content: "[ ] ";
+  white-space: pre;
+}
+
+.kit__list li.is-in {
+  color: var(--stage-fg, var(--fg));
+}
+
+.kit__list li.is-in::before {
+  content: "[x] ";
+}
+
+.kit__tag,
+.kit__status {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+.kit__tag {
+  top: calc(var(--box-bottom, 70vh) + 14px);
+  min-height: 24px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  line-height: 1.3;
+  font-weight: 500;
+  visibility: hidden;
+}
+
+.kit__tag.is-on {
+  visibility: visible;
+}
+
+.kit__tag-num {
+  margin-right: 6px;
+  color: var(--stage-fg-dim, var(--fg-dim));
+  font-weight: 400;
+}
+
+.kit__status {
+  top: calc(var(--box-bottom, 70vh) + 48px);
+}
+
+/* In the caption slot under the box: free during the finale, so it never covers the box. */
+.kit__replay {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(var(--box-bottom, 70vh) + 8px);
+  transform: translateX(-50%);
+}
+
+/* On the night sky the stage buttons switch to the light-on-dark look. */
+.kit__stage.is-night {
+  --btn-bg: #f3efe7;
+  --btn-fg: #141310;
+  --btn-hover: #ffffff;
+  --focus: #f7c531;
+}
+
+.kit__stage.is-finale .kit__tag,
+.kit__stage.is-finale .kit__status,
+.kit__stage.is-finale .kit__inventory {
+  visibility: hidden;
+}
+
+/* Below 1200px the inventory collapses to its counter (the full list would run into the box);
+   the list itself stays in the page for screen readers. On phones the counter sits under the
+   subtitle, from 700px in the top right corner. */
+@media (max-width: 1199px) {
+  .js .kit:not(.is-static) .kit__inventory {
+    padding-top: 10px;
+    padding-bottom: 0;
+  }
+
+  .js .kit:not(.is-static) .kit__list {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip-path: inset(50%);
+    white-space: nowrap;
+  }
+
+}
+
+@media (min-width: 700px) and (max-width: 1199px) {
+  .js .kit:not(.is-static) .kit__inventory {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 56px var(--gutter) 0 0;
+  }
+
+  .js .kit:not(.is-static) .kit__copy {
+    padding-right: 220px;
+  }
+}
+
+@media (min-width: 700px) {
+  .kit__copy {
+    max-width: 44rem;
+    padding-top: 52px;
+  }
+
+  .kit__tag {
+    font-size: 20px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .js .kit:not(.is-static) .kit__inventory {
+    position: absolute;
+    left: 0;
+    bottom: 40px;
+  }
+
+  .kit__list {
+    font-size: 15px;
+    line-height: 1.7;
+  }
+}
+
+/* Reduced motion: the finished states, no pinning: heading, the full box, the checklist,
+   then the sealed box under the lit word on a night sky. */
+.kit.is-static .kit__stage {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+.kit.is-static .kit__copy {
+  order: 1;
+}
+
+.kit.is-static .kit__scene {
+  order: 2;
+  position: relative;
+  height: 60vh;
+  height: 60svh;
+  min-height: 300px;
+  max-height: 560px;
+}
+
+.kit.is-static .kit__inventory {
+  order: 3;
+  position: static;
+  padding-bottom: 32px;
+}
+
+.kit__still {
+  position: relative;
+  height: 70vh;
+  height: 70svh;
+  min-height: 320px;
+  max-height: 640px;
+  overflow: hidden;
+  background: var(--sky-3);
+}
+
+.kit__still canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/* Contact */
+.contact {
+  position: relative;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 104px var(--gutter) 80px;
+}
+
+/* Gleb stands beside the heading on phones (his bubble goes into the top padding) and beside
+   the whole block from 700px, where he is drawn twice as large. */
+.contact__head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  column-gap: 12px;
+  max-width: 40rem;
+}
+
+.contact__head > * {
+  grid-column: 1 / -1;
+}
+
+.contact__head > h2 {
+  grid-column: 1;
+}
+
+.contact__head > .btn {
+  justify-self: start;
+}
+
+.contact__gleb {
+  grid-column: 2;
+  grid-row: 1;
+  align-self: start;
+}
+
+@media (min-width: 700px) {
+  .contact__head {
+    grid-template-columns: minmax(0, 40rem) auto;
+    column-gap: 72px;
+    max-width: none;
+    justify-content: start;
+  }
+
+  .contact__head > * {
+    grid-column: 1;
+  }
+
+  .contact__gleb {
+    grid-column: 2;
+    grid-row: 1 / span 5;
+    align-self: end;
+  }
+}
+
+.contact__head .lead {
+  margin-top: 16px;
+}
+
+.contact__after {
+  max-width: 32rem;
+  margin-top: 14px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--fg-dim);
+}
+
+.contact__handle {
+  margin-top: 10px;
+  color: var(--fg-dim);
+}
+
+/* Formats and prices: three cards with the same rows (what for, what is included, what we need
+   from you, when it does not fit, time, price, a button to the same Telegram chat). The price
+   block sits at the bottom of each card, so the prices line up. */
+.formats {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 96px var(--gutter) 8px;
+}
+
+.formats__head {
+  max-width: 40rem;
+  margin-bottom: 28px;
+}
+
+.formats__lead {
+  margin-top: 12px;
+  color: var(--fg-dim);
+}
+
+.packages {
+  display: grid;
+  gap: 20px;
+}
+
+.package {
+  display: flex;
+  flex-direction: column;
+  padding: 28px 24px 30px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.package h3 {
+  margin: 18px 0 10px;
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+.package > p,
+.package__body > p {
+  margin: 0 0 16px;
+}
+
+.package__for {
+  font-weight: 500;
+}
+
+.package__label {
+  margin: 8px 0 10px;
+}
+
+.package ul {
+  margin: 0 0 18px;
+  padding: 0;
+  list-style: none;
+}
+
+.package li {
+  position: relative;
+  padding-left: 20px;
+}
+
+.package li + li {
+  margin-top: 6px;
+}
+
+.package li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.62em;
+  width: 8px;
+  height: 8px;
+  background: var(--accent);
+}
+
+.package .package__not {
+  margin-bottom: 24px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--fg-dim);
+}
+
+.package__deal {
+  margin-top: auto;
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+}
+
+.package__time {
+  margin: 0 0 10px;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  line-height: 1.45;
+  color: var(--fg-dim);
+}
+
+.package__price {
+  margin: 0 0 6px;
+  font-size: 28px;
+  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+}
+
+.package__price + .package__btn {
+  margin-top: 14px; /* no terms line under this price */
+}
+
+.package__terms {
+  margin: 0 0 20px;
+  font-size: 15px;
+  line-height: 1.45;
+  color: var(--fg-dim);
+}
+
+.package__icon {
+  min-height: 72px;
+}
+
+/* Side by side, the art sits in one slot height, so the card titles line up. */
+@media (min-width: 760px) {
+  .package__art {
+    display: flex;
+    align-items: flex-end;
+    height: 112px;
+  }
+}
+
+.package__who {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 14px;
+  color: var(--fg-dim);
+}
+
+.package__avatar {
+  flex: none;
+  width: 32px;
+  height: 56px;
+}
+
+.package__who .package__avatar + .package__avatar {
+  margin-left: -4px;
+}
+
+/* Four formats as a 2×2 grid: wide enough for the lists, and the cards of a row share one
+   height, so their price blocks line up. One column on phones. */
+@media (min-width: 760px) {
+  .packages {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
+  }
+}
+
+/* Side by side, each card lays its parts on the shared rows of its grid row (art, title, who,
+   body, then time, price, terms, button), so the price lines and buttons line up even when the
+   text above or below them wraps differently. */
+@supports (grid-template-rows: subgrid) {
+  @media (min-width: 760px) {
+    .package {
+      display: grid;
+      grid-row: span 8;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
+
+    .package__deal {
+      display: grid;
+      grid-row: span 4;
+      grid-template-rows: subgrid;
+      row-gap: 0;
+    }
+
+    .package__time {
+      grid-row: 1;
+    }
+
+    .package__price {
+      grid-row: 2;
+    }
+
+    .package__terms {
+      grid-row: 3;
+    }
+
+    .package__deal .package__btn {
+      grid-row: 4;
+      justify-self: start;
+      align-self: start;
+      margin-top: 0;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  .package {
+    padding: 32px 30px 36px;
+  }
+
+  .package h3 {
+    font-size: 30px;
+  }
+}
+
+/* Footer */
+.footer {
+  padding: 40px var(--gutter) 56px;
+  border-top: 1px solid var(--line);
+  text-align: center;
+}
+
+.footer__brand {
+  margin: 0 0 10px;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+}
+
+.footer .label a {
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .btn {
+    transition: none;
+  }
+}
+
+/* The wordmark with the firework out of the A (tools/logo/build_logo.py), one file per theme. */
+.logo {
+  display: block;
+  width: auto;
+  height: 48px;
+}
+
+.footer__brand .logo {
+  height: 56px;
+}
+
+.logo--dark,
+[data-theme="dark"] .logo--light {
+  display: none;
+}
+
+[data-theme="dark"] .logo--dark {
+  display: block;
+}
+
+@media (max-width: 699px) {
+  .topbar .logo {
+    height: 34px;
+  }
+}
+
+/* Details of a format fold away (Gleb 23.10: «оч долго сам сайт листается»): a card shows who it
+   is for, the price and the button; «Подробнее» opens what is included and what we need. */
+.package__more {
+  margin: 0 0 8px;
+}
+
+.package__more > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  cursor: pointer;
+  list-style: none;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--fg-dim);
+}
+
+.package__more > summary::-webkit-details-marker {
+  display: none;
+}
+
+.package__more > summary::before {
+  content: "+";
+  display: inline-grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  color: var(--fg);
+}
+
+.package__more[open] > summary::before {
+  content: "−";
+}
+
+.package__more > summary:hover {
+  color: var(--fg);
+}
+
+.package__more[open] > summary {
+  margin-bottom: 8px;
+}
+
+/* Phones: the four formats side by side, swiped like a shelf, each card most of the width. */
+@media (max-width: 759px) {
+  .packages {
+    display: flex;
+    gap: 12px;
+    margin: 0 calc(-1 * var(--gutter));
+    padding: 0 var(--gutter) 8px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding: 0 var(--gutter);
+    scrollbar-width: none;
+  }
+
+  .packages::-webkit-scrollbar {
+    display: none;
+  }
+
+  .package {
+    flex: 0 0 86%;
+    scroll-snap-align: start;
+  }
+
+  .formats__lead::after {
+    content: " Листайте вбок →";
+    color: var(--fg);
+  }
+}
+
+/* Sections in the header, so nobody has to scroll to the prices or the contact. */
+.topbar__nav {
+  display: flex;
+  gap: 18px;
+}
+
+.topbar__nav a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.topbar__nav a:hover {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (max-width: 420px) {
+  .topbar__nav {
+    gap: 12px;
+  }
+
+  .topbar__nav a {
+    font-size: 15px;
+  }
+}
+
+/* The Telegram button that stays at hand after the first screen, gone again at the contact. */
+.float-cta {
+  position: fixed;
+  z-index: 20;
+  right: var(--gutter);
+  bottom: calc(16px + env(safe-area-inset-bottom, 0px));
+  min-height: 48px;
+  padding: 0 22px;
+  box-shadow: 0 6px 20px rgba(20, 19, 16, 0.22);
+  opacity: 0;
+  transform: translateY(12px);
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease, background-color 0.2s ease;
+}
+
+.float-cta__short {
+  display: none;
+}
+
+@media (max-width: 699px) {
+  .float-cta {
+    min-height: 44px;
+    padding: 0 18px;
+    font-size: 15px;
+  }
+
+  .float-cta__long {
+    display: none;
+  }
+
+  .float-cta__short {
+    display: inline;
+  }
+}
+
+.float-cta.is-on {
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .float-cta {
+    transition: none;
+  }
+}
+
+/* Situation (the S of SAR, Gleb's plan from the start): four situations a client comes with,
+   each a link to the format that solves it. One screen at most. */
+.situation {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 72px var(--gutter) 24px;
+}
+
+.situation h2 {
+  margin: 0 0 24px;
+}
+
+.situation__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.situation__card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 14px;
+  height: 100%;
+  padding: 16px 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+  color: var(--fg);
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.situation__card:hover {
+  background: var(--surface-hover, var(--surface));
+}
+
+.situation__text {
+  font-size: 15px;
+  line-height: 1.4;
+  font-weight: 500;
+  text-wrap: pretty;
+}
+
+.situation__go {
+  font-size: 12px;
+  color: var(--accent);
+}
+
+.situation__go::after {
+  content: " →";
+}
+
+.situation__card:hover .situation__go {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+@media (min-width: 900px) {
+  .situation {
+    padding-top: 96px;
+  }
+
+  .situation__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .situation__card {
+    padding: 24px 22px;
+    gap: 22px;
+  }
+
+  .situation__text {
+    font-size: 19px;
+  }
+
+  .situation__go {
+    font-size: 13px;
+  }
+}
+
+/* A situation link lands on its format with a moment of highlight. */
+.package:target {
+  outline: 2px solid var(--accent);
+  outline-offset: 4px;
+}
+
+/* «Почему не снять самим»: the usual ways and what goes wrong with each, then three doubts
+   answered (Next Move Theory: fire the competing ways, reduce the specific fears). Compact. */
+.compare {
+  max-width: 1240px;
+  margin: 0 auto;
+  padding: 80px var(--gutter) 8px;
+}
+
+.compare h2 {
+  margin: 0 0 24px;
+}
+
+.compare__list {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.compare__card {
+  padding: 16px 14px;
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.compare__card--us {
+  background: transparent;
+  box-shadow: inset 0 0 0 2px var(--accent);
+}
+
+.compare__way {
+  margin: 0 0 8px;
+  font-size: 15px;
+  line-height: 1.3;
+  font-weight: 600;
+}
+
+.compare__cost {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.4;
+  color: var(--fg-dim);
+}
+
+.compare__card--us .compare__cost {
+  color: var(--fg);
+}
+
+.doubts {
+  display: grid;
+  gap: 14px;
+  margin: 28px 0 0;
+}
+
+.doubts dt {
+  font-weight: 600;
+}
+
+.doubts dd {
+  margin: 2px 0 0;
+  color: var(--fg-dim);
+}
+
+@media (min-width: 900px) {
+  .compare {
+    padding-top: 96px;
+  }
+
+  .compare__list {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  .compare__card {
+    padding: 22px 20px;
+  }
+
+  .compare__way {
+    font-size: 18px;
+  }
+
+  .compare__cost {
+    font-size: 16px;
+  }
+
+  .doubts {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 36px;
+  }
+}

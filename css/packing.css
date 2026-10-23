@@ -1,0 +1,225 @@
+/* Packing scene (third diorama): the same frame as the kit section, a tall runway with a sticky
+   stage. --stage-bg and --stage-fg are moved by js/sky.js from day to night for the salute. */
+.pack {
+  position: relative;
+}
+
+.pack__stage {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  overflow: hidden;
+  background: var(--stage-bg, var(--bg));
+  color: var(--stage-fg, var(--fg));
+}
+
+.js .pack:not(.is-static) {
+  height: calc((var(--pack-runway, 400) + 100) * 1vh);
+  height: calc((var(--pack-runway, 400) + 100) * 1svh);
+}
+
+.js .pack:not(.is-static) .pack__stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100svh;
+}
+
+.pack__scene {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.pack__canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.pack__copy {
+  position: relative;
+  z-index: 1;
+  max-width: 44rem;
+  padding: 32px var(--gutter) 0;
+}
+
+.pack__sub {
+  margin-top: 10px;
+  color: var(--stage-fg-dim, var(--fg-dim));
+}
+
+.pack .mono {
+  color: var(--stage-fg-dim, var(--fg-dim));
+}
+
+.pack__inventory {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  padding: 36px var(--gutter) 0 0;
+  text-align: right;
+}
+
+.pack__list {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+.pack__list li.is-in::after {
+  content: " (в коробке)";
+}
+
+.pack__tag,
+.pack__status {
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  right: 0;
+  margin: 0;
+  text-align: center;
+  pointer-events: none;
+}
+
+/* The caption under the room: the item's big icon, its number and name. Pops in two steps. */
+.pack__tag {
+  top: calc(var(--room-bottom, 70vh) + 8px);
+  padding: 0 var(--gutter);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 44px;
+  font-family: var(--font-mono);
+  font-size: 17px;
+  font-weight: 500;
+  visibility: hidden;
+  transform: translateY(6px);
+}
+
+.pack__tag.is-on {
+  visibility: visible;
+  transform: none;
+  transition: transform 0.12s steps(2, end);
+}
+
+.pack__tag-num {
+  color: var(--stage-fg-dim, var(--fg-dim));
+  font-weight: 400;
+}
+
+.pack__status {
+  top: calc(var(--room-bottom, 70vh) + 56px);
+}
+
+.pack__replay {
+  position: absolute;
+  z-index: 2;
+  left: 50%;
+  top: calc(var(--room-bottom, 70vh) + 8px);
+  transform: translateX(-50%);
+}
+
+.pack__stage.is-night {
+  --btn-bg: #f3efe7;
+  --btn-fg: #141310;
+  --btn-hover: #ffffff;
+  --focus: #f7c531;
+}
+
+.pack__stage.is-finale .pack__tag,
+.pack__stage.is-finale .pack__status,
+.pack__tag.is-on ~ .pack__status {
+  visibility: hidden;
+}
+
+/* Phones: the counter goes under the subtitle instead of the top right corner; the caption is
+   smaller and its icon never shrinks against the screen edge. */
+@media (max-width: 699px) {
+  .pack__tag {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  .pack__tag-icon {
+    flex: none;
+  }
+
+  .pack__inventory {
+    position: relative;
+    padding: 10px var(--gutter) 0;
+    text-align: left;
+  }
+}
+
+@media (min-width: 700px) {
+  .pack__copy {
+    padding-top: 52px;
+  }
+
+  .pack__inventory {
+    padding-top: 56px;
+  }
+
+  .pack__tag {
+    font-size: 20px;
+  }
+}
+
+/* Reduced motion: no pinning, the finished room under the lit word. */
+.pack.is-static .pack__stage {
+  min-height: 0;
+  height: auto;
+}
+
+.pack.is-static .pack__scene {
+  position: relative;
+  height: 80vh;
+  height: 80svh;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pack__tag.is-on {
+    transition: none;
+  }
+}
+
+/* No scripts, or the scene failed: no runway, the kit as a plain list. */
+html:not(.js) .pack__list,
+.kit-failed .pack__list {
+  position: static;
+  width: auto;
+  height: auto;
+  overflow: visible;
+  clip-path: none;
+  margin-top: 8px;
+  text-align: left;
+}
+
+html:not(.js) .pack__inventory,
+.kit-failed .pack__inventory {
+  position: relative;
+  padding: 16px var(--gutter) 40px;
+  text-align: left;
+}
+
+html:not(.js) .pack__count,
+.kit-failed .pack__count,
+.kit-failed .pack__scene {
+  display: none;
+}
+
+.kit-failed .pack {
+  height: auto;
+}
+
+.kit-failed .pack__stage {
+  position: relative;
+  height: auto;
+  min-height: 0;
+}

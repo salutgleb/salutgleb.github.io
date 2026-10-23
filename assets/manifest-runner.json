@@ -1,0 +1,133 @@
+{
+ "art_px": "1 PNG px = 1 sprite px, drawn at 2 art px per sprite px, smoothing off",
+ "source": "PixelLab character 2e1dcbe1-8d15-4b09-a15e-dbbb11841aea, tools/runner/build_runner.py",
+ "frame": [
+  88,
+  92
+ ],
+ "scale": 2,
+ "feet": [
+  44,
+  86
+ ],
+ "head": [
+  44,
+  34
+ ],
+ "clips": {
+  "stand": {
+   "ms": 1000,
+   "loop": true,
+   "dirs": {
+    "s": "sprites/runner/stand-s.png",
+    "se": "sprites/runner/stand-se.png",
+    "e": "sprites/runner/stand-e.png",
+    "ne": "sprites/runner/stand-ne.png",
+    "n": "sprites/runner/stand-n.png",
+    "nw": "sprites/runner/stand-nw.png",
+    "w": "sprites/runner/stand-w.png",
+    "sw": "sprites/runner/stand-sw.png"
+   }
+  },
+  "run": {
+   "role": "run",
+   "ms": 35,
+   "loop": true,
+   "dirs": {
+    "e": "sprites/runner/run-e.png",
+    "w": {
+     "mirror": "e"
+    }
+   }
+  },
+  "carry": {
+   "role": "carry",
+   "ms": 38,
+   "loop": true,
+   "dirs": {
+    "e": "sprites/runner/carry-e.png",
+    "w": {
+     "mirror": "e"
+    }
+   },
+   "hold": [
+    -46,
+    -45,
+    -47,
+    -48,
+    -47,
+    -45,
+    -46,
+    -47
+   ]
+  },
+  "lift": {
+   "role": "lift",
+   "ms": 30,
+   "loop": false,
+   "dirs": {
+    "ne": "sprites/runner/lift-ne.png",
+    "nw": {
+     "mirror": "ne"
+    }
+   }
+  },
+  "toss": {
+   "role": "toss",
+   "ms": 24,
+   "loop": false,
+   "dirs": {
+    "s": "sprites/runner/toss-s.png"
+   }
+  },
+  "press": {
+   "role": "press",
+   "ms": 57,
+   "loop": false,
+   "dirs": {
+    "s": "sprites/runner/press-s.png"
+   }
+  },
+  "light": {
+   "role": "light",
+   "ms": 64,
+   "loop": false,
+   "dirs": {
+    "s": "sprites/runner/light-s.png"
+   }
+  },
+  "brace": {
+   "role": "brace",
+   "ms": 110,
+   "loop": true,
+   "dirs": {
+    "se": "sprites/runner/brace-se.png",
+    "sw": {
+     "mirror": "se"
+    }
+   }
+  },
+  "idle": {
+   "ms": 1000,
+   "loop": true,
+   "dirs": {
+    "s": "sprites/runner/stand-s.png",
+    "se": "sprites/runner/stand-se.png",
+    "e": "sprites/runner/stand-e.png",
+    "ne": "sprites/runner/stand-ne.png",
+    "n": "sprites/runner/stand-n.png",
+    "nw": "sprites/runner/stand-nw.png",
+    "w": "sprites/runner/stand-w.png",
+    "sw": "sprites/runner/stand-sw.png"
+   }
+  },
+  "put": {
+   "reverseOf": "lift",
+   "ms": 27
+  },
+  "pull": {
+   "reverseOf": "toss",
+   "ms": 26
+  }
+ }
+}

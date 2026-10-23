@@ -1,0 +1,791 @@
+{
+ "art_px": "1 PNG px = 1 art px; draw at an integer scale with smoothing off",
+ "members": {
+  "gleb": {
+   "size": [
+    64,
+    120
+   ],
+   "layers": [
+    {
+     "id": "tile",
+     "file": "sprites/team/tile.png",
+     "x": 1,
+     "y": 84,
+     "frames": 1,
+     "ms": 0
+    },
+    {
+     "id": "gleb-still",
+     "file": "sprites/team/gleb-still.png",
+     "x": 14,
+     "y": 3,
+     "w": 38,
+     "h": 102,
+     "frames": 1,
+     "ms": 0
+    }
+   ],
+   "loops": [
+    {
+     "id": "gleb-life",
+     "role": "idle",
+     "file": "sprites/team/gleb-loop.png",
+     "x": 14,
+     "y": 3,
+     "w": 38,
+     "h": 102,
+     "frames": 7,
+     "ms": 100,
+     "sequence": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      3,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      4,
+      4,
+      4,
+      5,
+      5,
+      5,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      1,
+      6,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0
+     ],
+     "replaces": "gleb-still",
+     "note": "default loop: breathing, blinks and the personal gesture; frames = unique poses in the strip; play `sequence` (one index per 100 ms step); cycle 12.0 s",
+     "poses": [
+      {
+       "rest": 1
+      },
+      {
+       "dy": 1
+      },
+      {
+       "blink": 1
+      },
+      {
+       "pose": "g1"
+      },
+      {
+       "pose": "g2"
+      },
+      {
+       "pose": "g2",
+       "rec": 1
+      },
+      {
+       "blink": 1,
+       "dy": 1
+      }
+     ],
+     "default": true
+    },
+    {
+     "id": "gleb-talk",
+     "role": "talk",
+     "file": "sprites/team/gleb-talk.png",
+     "x": 14,
+     "y": 3,
+     "w": 38,
+     "h": 102,
+     "frames": 4,
+     "ms": 100,
+     "sequence": [
+      0,
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      0,
+      2,
+      2,
+      0,
+      1,
+      0,
+      3,
+      0,
+      2,
+      0,
+      0,
+      1,
+      2,
+      2,
+      0
+     ],
+     "replaces": "gleb-still",
+     "note": "while a speech bubble types: the rest pose with the mouth moving; frames = unique poses in the strip; play `sequence` (one index per 100 ms step); cycle 2.2 s",
+     "poses": [
+      {
+       "mouth": "half"
+      },
+      {
+       "rest": 1
+      },
+      {
+       "mouth": "closed"
+      },
+      {
+       "blink": 1
+      }
+     ]
+    },
+    {
+     "id": "gleb-point",
+     "role": "point",
+     "file": "sprites/team/gleb-point.png",
+     "x": 1,
+     "y": 3,
+     "w": 63,
+     "h": 102,
+     "frames": 4,
+     "ms": 100,
+     "sequence": [
+      0,
+      0,
+      1,
+      2,
+      2,
+      1,
+      0,
+      1,
+      0,
+      3,
+      2,
+      1,
+      1,
+      0,
+      2,
+      2,
+      1,
+      1,
+      0,
+      1,
+      2,
+      1
+     ],
+     "replaces": "gleb-still",
+     "note": "presenting: open hand toward a screen on his right at chest height, glancing at it, talking. To point left, draw each frame mirrored inside its w x h box at x' = size[0] - x - w; frames = unique poses in the strip; play `sequence` (one index per 100 ms step); cycle 2.2 s",
+     "poses": [
+      {
+       "look": "right",
+       "pose": "point"
+      },
+      {
+       "look": "right",
+       "mouth": "half",
+       "pose": "point"
+      },
+      {
+       "look": "right",
+       "mouth": "closed",
+       "pose": "point"
+      },
+      {
+       "blink": 1,
+       "look": "right",
+       "mouth": "half",
+       "pose": "point"
+      }
+     ]
+    },
+    {
+     "id": "gleb-wave",
+     "role": "wave",
+     "file": "sprites/team/gleb-wave.png",
+     "x": 8,
+     "y": 3,
+     "w": 44,
+     "h": 102,
+     "frames": 4,
+     "ms": 100,
+     "sequence": [
+      0,
+      0,
+      0,
+      1,
+      2,
+      2,
+      3,
+      3,
+      2,
+      2,
+      3,
+      3,
+      2,
+      2,
+      3,
+      3,
+      2,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0
+     ],
+     "replaces": "gleb-still",
+     "note": "greeting for the hero: rise, three swings, lower, rest; play once or loop; frames = unique poses in the strip; play `sequence` (one index per 100 ms step); cycle 2.3 s",
+     "poses": [
+      {
+       "rest": 1
+      },
+      {
+       "pose": "w1"
+      },
+      {
+       "pose": "w2"
+      },
+      {
+       "pose": "w3"
+      }
+     ]
+    }
+   ]
+  },
+  "sonya": {
+   "size": [
+    64,
+    120
+   ],
+   "layers": [
+    {
+     "id": "tile",
+     "file": "sprites/team/tile.png",
+     "x": 1,
+     "y": 84,
+     "frames": 1,
+     "ms": 0
+    },
+    {
+     "id": "sonya-still",
+     "file": "sprites/team/sonya-still.png",
+     "x": 5,
+     "y": 15,
+     "w": 49,
+     "h": 90,
+     "frames": 1,
+     "ms": 0
+    }
+   ],
+   "loops": [
+    {
+     "id": "sonya-life",
+     "role": "idle",
+     "file": "sprites/team/sonya-loop.png",
+     "x": 5,
+     "y": 15,
+     "w": 49,
+     "h": 90,
+     "frames": 10,
+     "ms": 100,
+     "sequence": [
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      2,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      6,
+      6,
+      7,
+      8,
+      8,
+      8,
+      7,
+      7,
+      6,
+      6,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      9,
+      9,
+      9,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      3,
+      3,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      3,
+      3,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      5,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      1,
+      1,
+      1,
+      1,
+      1
+     ],
+     "replaces": "sonya-still",
+     "note": "default loop: breathing, blinks and the personal gesture; frames = unique poses in the strip; play `sequence` (one index per 100 ms step); cycle 22.0 s Frame 9: a wink (tools/team/sonya_wink.py).",
+     "poses": [
+      {
+       "rest": 1
+      },
+      {
+       "dy": 1
+      },
+      {
+       "blink": 1,
+       "dy": 1
+      },
+      {
+       "pose": "p1"
+      },
+      {
+       "pose": "p2"
+      },
+      {
+       "blink": 1
+      },
+      {
+       "pose": "t1"
+      },
+      {
+       "pose": "t2"
+      },
+      {
+       "blink": 1,
+       "pose": "t2"
+      },
+      {
+       "wink": "right"
+      }
+     ],
+     "default": true
+    },
+    {
+     "id": "sonya-talk",
+     "role": "talk",
+     "file": "sprites/team/sonya-talk.png",
+     "x": 5,
+     "y": 15,
+     "w": 49,
+     "h": 90,
+     "frames": 4,
+     "ms": 100,
+     "sequence": [
+      0,
+      1,
+      0,
+      2,
+      0,
+      1,
+      1,
+      0,
+      2,
+      0,
+      0,
+      1,
+      2,
+      0,
+      1,
+      3,
+      1,
+      1,
+      0,
+      2,
+      0,
+      1
+     ],
+     "replaces": "sonya-still",
+     "note": "while a speech bubble types: the rest pose with the mouth moving; frames = unique poses in the strip; play `sequence` (one index per 100 ms step); cycle 2.2 s",
+     "poses": [
+      {
+       "mouth": "half"
+      },
+      {
+       "rest": 1
+      },
+      {
+       "mouth": "open"
+      },
+      {
+       "blink": 1,
+       "mouth": "half"
+      }
+     ]
+    }
+   ]
+  }
+ },
+ "badges": {
+  "size": [
+   48,
+   48
+  ],
+  "frames": {
+   "unlocked": {
+    "file": "sprites/team/badge-unlocked.png",
+    "w": 48,
+    "h": 48
+   },
+   "highlighted": {
+    "file": "sprites/team/badge-highlighted.png",
+    "w": 48,
+    "h": 48
+   }
+  },
+  "icon_slot": {
+   "x": 12,
+   "y": 12,
+   "w": 24,
+   "h": 24
+  },
+  "icons": [
+   {
+    "id": "camera",
+    "file": "sprites/team/badge-icon-camera.png",
+    "w": 28,
+    "h": 20,
+    "x": 10,
+    "y": 14,
+    "note": "23.10: downscale of the ChatGPT camera Gleb likes (raw/camera.png), silver 1 px ring; the old side-view pictogram read as phallic"
+   },
+   {
+    "id": "mic",
+    "file": "sprites/team/badge-icon-mic.png",
+    "w": 27,
+    "h": 28,
+    "x": 10,
+    "y": 10,
+    "note": "23.10: DJI Mic Basic from the kit sprite (Gleb's real mic), silver 1 px ring; the ball-on-handle pictogram risked the same reading as the old camera"
+   },
+   {
+    "id": "play",
+    "file": "sprites/team/badge-icon-play.png",
+    "w": 24,
+    "h": 18,
+    "x": 12,
+    "y": 15
+   },
+   {
+    "id": "star",
+    "file": "sprites/team/badge-icon-star.png",
+    "w": 24,
+    "h": 24,
+    "x": 12,
+    "y": 12
+   },
+   {
+    "id": "clapper",
+    "file": "sprites/team/badge-icon-clapper.png",
+    "w": 24,
+    "h": 19,
+    "x": 12,
+    "y": 14
+   },
+   {
+    "id": "iphone",
+    "file": "sprites/team/badge-icon-iphone.png",
+    "w": 16,
+    "h": 24,
+    "x": 16,
+    "y": 12
+   }
+  ],
+  "note": "draw a frame, then one icon at its x, y (offsets inside the 48 x 48 badge); 'unlocked' is the normal state, 'highlighted' is hover / focus / just earned (orange rim and sparkles in the free corners, same size so the swap does not shift); the achievement text stays HTML"
+ },
+ "notes": {
+  "draw": "per member: draw `layers` in order; while animating, draw ONE loop's current frame instead of the layer named in its `replaces` (frames have transparent backgrounds, so drawing both would ghost)",
+  "frame": "frame index = sequence[floor(t / ms) % sequence.length]; the strip holds `frames` unique poses of w x h side by side (js/studio.js frameOf already works this way)",
+  "reduced_motion": "draw `layers` only: the still is the rest pose with eyes open",
+  "themes": "transparent backgrounds, 1 px #0d0b0b outline; checked on #eeeae2, #151719 and #0b0a09",
+  "scale": "made for 2 CSS px per art px on desktop and 1 on phones",
+  "loops": "one loop per member at a time, chosen by `role`: idle (default), talk while a bubble types, point when Gleb presents the showreel, wave for the hero"
+ }
+}

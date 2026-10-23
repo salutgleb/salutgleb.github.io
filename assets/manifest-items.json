@@ -1,0 +1,641 @@
+{
+ "version": 5,
+ "notes": [
+  "items: list order is the drop order (the camera first); label = the checklist, caption = shown with the number while the item falls; hull = convex hull of the opaque pixels in pixel-edge coordinates relative to the sprite top-left.",
+  "Sprites are faithful conversions of the ChatGPT sources; light, gimbal, tripod and mic re-exported with a coarser cell on 23.10 (kit v6) so the whole kit packs inside the box; meant for 2 CSS px per art px on desktop, 1 on phones.",
+  "Light comes from the upper right on the box (REVERSE.md B4); the icons keep the lighting of their sources.",
+  "fileDark: the same sprite with a lighter 1 px silhouette (#5a5e66, navy #34507a for the iPhone) for the dark theme #151719; same size and hull.",
+  "Kit v8: the box is bottomless (box.swallow); the box layers are made by tools/icons/build_void.py."
+ ],
+ "artPx": "all sizes and coordinates are in art pixels (1 art px = 1 PNG px)",
+ "items": [
+  {
+   "id": "camera",
+   "file": "sprites/icons/camera.png",
+   "fileDark": "sprites/icons/camera-dark.png",
+   "w": 104,
+   "h": 73,
+   "label": "Sony FX30",
+   "caption": "Sony FX30 · основная камера",
+   "hull": [
+    [
+     0,
+     36
+    ],
+    [
+     3,
+     14
+    ],
+    [
+     6,
+     10
+    ],
+    [
+     16,
+     3
+    ],
+    [
+     22,
+     1
+    ],
+    [
+     37,
+     0
+    ],
+    [
+     45,
+     0
+    ],
+    [
+     97,
+     9
+    ],
+    [
+     100,
+     12
+    ],
+    [
+     102,
+     15
+    ],
+    [
+     103,
+     17
+    ],
+    [
+     104,
+     20
+    ],
+    [
+     104,
+     61
+    ],
+    [
+     103,
+     63
+    ],
+    [
+     99,
+     67
+    ],
+    [
+     92,
+     71
+    ],
+    [
+     90,
+     72
+    ],
+    [
+     32,
+     73
+    ],
+    [
+     20,
+     73
+    ],
+    [
+     17,
+     72
+    ],
+    [
+     9,
+     68
+    ],
+    [
+     4,
+     63
+    ],
+    [
+     0,
+     55
+    ]
+   ],
+   "source": "raw/camera.png, own grid ~11 px"
+  },
+  {
+   "id": "light",
+   "file": "sprites/icons/light-93x112.png",
+   "fileDark": "sprites/icons/light-93x112-dark.png",
+   "w": 93,
+   "h": 112,
+   "label": "Aputure с LightDome II",
+   "caption": "Aputure с LightDome II · мягкий свет на лицо",
+   "hull": [
+    [
+     0,
+     40
+    ],
+    [
+     4,
+     20
+    ],
+    [
+     7,
+     11
+    ],
+    [
+     9,
+     6
+    ],
+    [
+     15,
+     0
+    ],
+    [
+     18,
+     0
+    ],
+    [
+     22,
+     1
+    ],
+    [
+     27,
+     3
+    ],
+    [
+     33,
+     6
+    ],
+    [
+     93,
+     41
+    ],
+    [
+     93,
+     55
+    ],
+    [
+     81,
+     111
+    ],
+    [
+     80,
+     112
+    ],
+    [
+     76,
+     112
+    ],
+    [
+     18,
+     100
+    ],
+    [
+     17,
+     99
+    ],
+    [
+     13,
+     93
+    ],
+    [
+     10,
+     88
+    ],
+    [
+     7,
+     82
+    ],
+    [
+     5,
+     77
+    ],
+    [
+     4,
+     73
+    ],
+    [
+     0,
+     55
+    ]
+   ],
+   "source": "raw/light.png, cell 11.25 px (0.8 of its ~9 px grid)"
+  },
+  {
+   "id": "iphone",
+   "file": "sprites/icons/iphone.png",
+   "fileDark": "sprites/icons/iphone-dark.png",
+   "w": 62,
+   "h": 113,
+   "label": "iPhone 18 Pro Max",
+   "caption": "iPhone 18 Pro Max · камера для рилсов",
+   "hull": [
+    [
+     0,
+     35
+    ],
+    [
+     1,
+     8
+    ],
+    [
+     3,
+     4
+    ],
+    [
+     6,
+     1
+    ],
+    [
+     9,
+     0
+    ],
+    [
+     53,
+     0
+    ],
+    [
+     57,
+     2
+    ],
+    [
+     59,
+     4
+    ],
+    [
+     61,
+     8
+    ],
+    [
+     62,
+     25
+    ],
+    [
+     62,
+     55
+    ],
+    [
+     61,
+     105
+    ],
+    [
+     60,
+     108
+    ],
+    [
+     57,
+     111
+    ],
+    [
+     53,
+     113
+    ],
+    [
+     9,
+     113
+    ],
+    [
+     6,
+     112
+    ],
+    [
+     2,
+     108
+    ],
+    [
+     1,
+     105
+    ],
+    [
+     0,
+     53
+    ]
+   ],
+   "source": "raw/iphone.png, own grid ~9 px"
+  },
+  {
+   "id": "mic",
+   "file": "sprites/icons/dji-mic-68x67.png",
+   "fileDark": "sprites/icons/dji-mic-68x67-dark.png",
+   "w": 68,
+   "h": 67,
+   "label": "DJI Mic",
+   "caption": "DJI Mic · беспроводные петлички",
+   "hull": [
+    [
+     0,
+     13
+    ],
+    [
+     3,
+     6
+    ],
+    [
+     6,
+     3
+    ],
+    [
+     8,
+     2
+    ],
+    [
+     12,
+     1
+    ],
+    [
+     19,
+     0
+    ],
+    [
+     21,
+     0
+    ],
+    [
+     25,
+     1
+    ],
+    [
+     68,
+     39
+    ],
+    [
+     68,
+     62
+    ],
+    [
+     66,
+     64
+    ],
+    [
+     60,
+     67
+    ],
+    [
+     51,
+     67
+    ],
+    [
+     49,
+     66
+    ],
+    [
+     9,
+     45
+    ],
+    [
+     7,
+     42
+    ],
+    [
+     4,
+     33
+    ],
+    [
+     2,
+     25
+    ],
+    [
+     0,
+     16
+    ]
+   ],
+   "source": "raw/dji_mic_basic.png, cell 14.1 px (1.76 x its ~8 px grid)"
+  },
+  {
+   "id": "gimbal",
+   "file": "sprites/icons/gimbal-69x104.png",
+   "fileDark": "sprites/icons/gimbal-69x104-dark.png",
+   "w": 69,
+   "h": 104,
+   "label": "Стабилизатор DJI RS",
+   "caption": "DJI RS · стабилизатор для съёмки на ходу",
+   "hull": [
+    [
+     0,
+     31
+    ],
+    [
+     13,
+     10
+    ],
+    [
+     15,
+     8
+    ],
+    [
+     18,
+     6
+    ],
+    [
+     58,
+     0
+    ],
+    [
+     60,
+     0
+    ],
+    [
+     65,
+     1
+    ],
+    [
+     69,
+     5
+    ],
+    [
+     69,
+     13
+    ],
+    [
+     67,
+     103
+    ],
+    [
+     66,
+     104
+    ],
+    [
+     9,
+     104
+    ],
+    [
+     7,
+     103
+    ],
+    [
+     0,
+     33
+    ]
+   ],
+   "source": "raw/gimbal.png, cell 11.4 px (0.7 of its ~8 px grid)"
+  },
+  {
+   "id": "tripod",
+   "file": "sprites/icons/tripod-80x85.png",
+   "fileDark": "sprites/icons/tripod-80x85-dark.png",
+   "w": 80,
+   "h": 85,
+   "label": "Штатив",
+   "caption": "Штатив · держит камеру всю съёмку",
+   "hull": [
+    [
+     0,
+     76
+    ],
+    [
+     16,
+     4
+    ],
+    [
+     18,
+     3
+    ],
+    [
+     21,
+     2
+    ],
+    [
+     25,
+     1
+    ],
+    [
+     32,
+     0
+    ],
+    [
+     39,
+     0
+    ],
+    [
+     45,
+     1
+    ],
+    [
+     50,
+     2
+    ],
+    [
+     70,
+     19
+    ],
+    [
+     78,
+     26
+    ],
+    [
+     79,
+     27
+    ],
+    [
+     80,
+     29
+    ],
+    [
+     80,
+     34
+    ],
+    [
+     67,
+     77
+    ],
+    [
+     65,
+     78
+    ],
+    [
+     50,
+     85
+    ],
+    [
+     41,
+     85
+    ],
+    [
+     2,
+     80
+    ],
+    [
+     0,
+     78
+    ]
+   ],
+   "source": "raw/set4 top right, cell 7.06 px (1.76 x its ~4 px grid)"
+  }
+ ],
+ "box": {
+  "w": 328,
+  "h": 284,
+  "anchor": {
+   "x": 164,
+   "y": 276,
+   "note": "where the box touches the ground: just below its bottom vertex (the 4 px run at x-2..x+1); same for every layer"
+  },
+  "layers": {
+   "shadow": "sprites/box/shadow.png",
+   "back": "sprites/box/open-back.png",
+   "front": "sprites/box/open-front.png",
+   "closed": "sprites/box/closed.png",
+   "tape": "sprites/box/tape.png"
+  },
+  "drawOrder": [
+   "shadow",
+   "back",
+   "items",
+   "front"
+  ],
+  "drawOrderClosed": [
+   "shadow",
+   "closed",
+   "tape"
+  ],
+  "floor": {
+   "x": 33,
+   "y": 106,
+   "w": 262,
+   "h": 104,
+   "note": "the box interior in the vertical plane through the left and right corners: inner walls at x and x+w, rim at y, floor surface at y+h. Pixel-edge coordinates."
+  },
+  "frontRim": [
+   [
+    32,
+    106
+   ],
+   [
+    162,
+    171
+   ],
+   [
+    166,
+    171
+   ],
+   [
+    296,
+    106
+   ]
+  ],
+  "frontRimNote": "top edge of the front walls (V shape: left corner, front vertex, right corner). Item pixels below this line are hidden by the front layer.",
+  "opening": {
+   "topRow": 40,
+   "cornerRows": [
+    105,
+    106
+   ],
+   "bottomRow": 171,
+   "leftCol": 32,
+   "rightCol": 295,
+   "note": "the top rhombus of the box (2:1, 4 px flat runs at the top and bottom vertices)"
+  },
+  "lid": {
+   "back": "sprites/box/lid-back.png",
+   "front": "sprites/box/lid-front.png",
+   "frames": 4,
+   "frameW": 328,
+   "frameH": 284,
+   "msPerFrame": 100,
+   "note": "frame 0 = open box, last frame = closed box; per frame draw back, items, front; hide items from the last frame on"
+  },
+  "closedBox": {
+   "x": 32,
+   "y": 40,
+   "w": 264,
+   "h": 236,
+   "note": "opaque area of closed.png (for the burst into pixels)"
+  },
+  "tapeNote": "tape.png overlays closed.png at the same origin (light-grey cross with the SALUT spark repeated)",
+  "shadowNote": "shadow.png is a flat silhouette meant to be tinted with the theme shadow colour",
+  "swallow": true,
+  "swallowNote": "bottomless box (kit v8): every item drops through the opening and is swallowed by the void; nothing rests inside (js/kit-physics.js, js/kit-draw.js)."
+ }
+}

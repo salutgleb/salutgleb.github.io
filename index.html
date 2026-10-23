@@ -1,0 +1,384 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>SALUT · интервью, рилсы и соцсети в Москве</title>
+  <meta name="description" content="Снимаем интервью и рилсы для брендов и экспертов в Москве и ведём их соцсети. Глеб снимает на камеру, Соня на iPhone, оба маркетологи.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ru_RU">
+  <meta property="og:title" content="SALUT · снимаем интервью и рилсы, ведём соцсети">
+  <meta property="og:description" content="Для брендов и экспертов в Москве. Интервью и выпуски для YouTube Глеб снимает на камеру, Соня делает рилсы на iPhone, соцсети ведём вдвоём. Telegram @imglebsmirnov.">
+  <meta name="theme-color" content="#eeeae2" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#151719" media="(prefers-color-scheme: dark)">
+  <meta name="color-scheme" content="light dark">
+  <script>
+    // Theme before the first paint: the saved choice if there is one, otherwise the system's.
+    (function () {
+      var theme = null;
+      try {
+        theme = window.localStorage.getItem('salut-theme');
+      } catch (error) {
+        theme = null;
+      }
+      if (theme !== 'light' && theme !== 'dark') {
+        theme = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      }
+      document.documentElement.setAttribute('data-theme', theme);
+      // ?review=1 underlines the facts that still wait for confirmation (class="tbc").
+      if (/[?&]review=1(&|$)/.test(window.location.search)) document.documentElement.classList.add('review');
+    })();
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 9 9' shape-rendering='crispEdges'%3E%3Crect width='9' height='9' fill='%23141310'/%3E%3Cpath fill='%23e0502a' d='M4 0h1v3H4zM4 6h1v3H4zM0 4h3v1H0zM6 4h3v1H6zM1 1h1v1H1zM2 2h1v1H2zM7 1h1v1H7zM6 2h1v1H6zM1 7h1v1H1zM2 6h1v1H2zM7 7h1v1H7zM6 6h1v1H6zM3 3h3v1H3zM3 5h3v1H3zM3 4h1v1H3zM5 4h1v1H5z'/%3E%3C/svg%3E">
+  <link rel="preload" href="assets/fonts/intertight-cyrillic.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/intertight-latin.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="css/fonts.css">
+  <link rel="stylesheet" href="css/site.css">
+  <link rel="stylesheet" href="css/speech.css">
+  <link rel="stylesheet" href="css/gallery.css">
+  <link rel="stylesheet" href="css/packing.css">
+</head>
+<body>
+  <a class="skip" href="#contact">Сразу к контактам</a>
+
+  <header class="topbar">
+    <a class="topbar__logo" href="#studio" aria-label="SALUT, в начало страницы"><img class="logo logo--light" src="assets/logo/salut-logo.svg" alt="SALUT"><img class="logo logo--dark" src="assets/logo/salut-logo-dark.svg" alt="SALUT"></a>
+    <nav class="topbar__nav" aria-label="Разделы">
+      <a href="#works">Работы</a>
+      <a href="#formats">Цены</a>
+      <a href="#contact">Связаться</a>
+    </nav>
+    <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Включить тёмную тему" hidden>
+      <svg class="icon-moon" viewBox="0 0 9 9" aria-hidden="true"><path fill="currentColor" d="M3 0h4v1h-4zM2 1h3v1h-3zM1 2h3v1h-3zM1 3h3v1h-3zM1 4h3v1h-3zM1 5h3v1h-3zM1 6h3v1h-3zM2 7h3v1h-3zM3 8h4v1h-4z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 9 9" aria-hidden="true"><path fill="currentColor" d="M4 0h1v1h-1zM1 1h1v1h-1zM7 1h1v1h-1zM3 2h3v1h-3zM2 3h5v1h-5zM0 4h1v1h-1zM2 4h5v1h-5zM8 4h1v1h-1zM2 5h5v1h-5zM3 6h3v1h-3zM1 7h1v1h-1zM7 7h1v1h-1zM4 8h1v1h-1z"/></svg>
+    </button>
+  </header>
+
+  <main>
+    <section class="hero" id="studio" aria-labelledby="hero-title">
+      <div class="hero__scene">
+        <canvas class="pixel" id="studio-canvas" aria-hidden="true"></canvas>
+      </div>
+      <div class="hero__text">
+        <p class="label">Видеосъёмка и&nbsp;ведение соцсетей в&nbsp;Москве</p>
+        <h1 id="hero-title">Снимаем интервью и&nbsp;рилсы <span class="tbc mark"><span>для </span><span>брендов </span><span>и&nbsp;экспертов</span></span>, ведём их&nbsp;соцсети</h1>
+        <p class="lead">Студию, свет, звук и&nbsp;монтаж берём на&nbsp;себя: выпуск через <span class="tbc">5&nbsp;рабочих дней</span>, из&nbsp;него сразу <span class="tbc">3&nbsp;рилса</span>. Соцсети ведём сами, мы&nbsp;оба маркетологи.</p>
+        <div class="hero__actions">
+          <div class="hero__cta">
+            <a class="btn" href="https://t.me/imglebsmirnov" rel="noopener">Обсудить съёмку</a>
+            <p class="hero__note">Откроется чат с&nbsp;Глебом в&nbsp;Telegram.</p>
+          </div>
+          <a class="btn btn--ghost" href="#works">Смотреть работы</a>
+        </div>
+      </div>
+      <p class="hero__hint mono" aria-hidden="true">Листайте вниз</p>
+    </section>
+
+    <section class="situation" id="situation" aria-labelledby="situation-title">
+      <h2 id="situation-title">Когда мы нужны</h2>
+      <ul class="situation__list">
+        <li><a class="situation__card" href="#format-studio"><span class="situation__text">Нужно интервью или выпуск для YouTube, а&nbsp;студии, камеры и&nbsp;звука нет.</span><span class="situation__go mono">Студийная съёмка</span></a></li>
+        <li><a class="situation__card" href="#format-mobile"><span class="situation__text">Рилсы нужны каждую неделю, а&nbsp;снимать и&nbsp;монтировать некому.</span><span class="situation__go mono">Мобильная съёмка</span></a></li>
+        <li><a class="situation__card" href="#format-smm"><span class="situation__text">Аккаунт есть, но&nbsp;посты выходят, когда о&nbsp;них вспомнили.</span><span class="situation__go mono">Ведение соцсетей</span></a></li>
+        <li><a class="situation__card" href="#format-avatar"><span class="situation__text">Роликов нужно много, а&nbsp;сниматься каждый раз некогда.</span><span class="situation__go mono">ИИ-аватар</span></a></li>
+      </ul>
+    </section>
+
+    <section class="team" id="team" aria-labelledby="team-title">
+      <div class="team__head">
+        <h2 id="team-title">Нас двое</h2>
+        <p class="team__lead"><span class="tbc">Сначала спросим, для чего вам видео и&nbsp;где оно выйдет.</span> Посредников нет: в&nbsp;Telegram отвечает Глеб, снимаем мы&nbsp;сами.</p>
+      </div>
+      <div class="team__scene">
+        <canvas class="pixel" id="team-canvas" aria-hidden="true"></canvas>
+      </div>
+      <div class="team__people">
+        <article class="member member--gleb" id="member-gleb" aria-labelledby="member-gleb-name">
+          <h3 class="member__name" id="member-gleb-name">Глеб</h3>
+          <p class="label member__role">Видеограф</p>
+          <ul class="achievements" aria-label="Ачивки: Глеб"></ul>
+        </article>
+        <article class="member member--sonya" id="member-sonya" aria-labelledby="member-sonya-name">
+          <h3 class="member__name" id="member-sonya-name">Соня</h3>
+          <p class="label member__role">Рилсмейкер и&nbsp;SMM</p>
+          <ul class="achievements" aria-label="Ачивки: Соня"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="pack" id="kit" aria-labelledby="kit-title">
+      <div class="pack__stage">
+        <div class="pack__scene">
+          <canvas class="pixel pack__canvas" id="pack-canvas" aria-hidden="true"></canvas>
+        </div>
+        <div class="pack__copy">
+          <h2 id="kit-title">На&nbsp;чём снимаем</h2>
+          <p class="pack__sub">Камера, свет, звук и&nbsp;iPhone для рилсов. Вся техника своя, а&nbsp;коробка у&nbsp;нас бездонная.</p>
+        </div>
+        <div class="pack__inventory">
+          <p class="mono pack__count" aria-hidden="true"><span id="pack-count">0</span>/<span id="pack-total">6</span> в&nbsp;коробке</p>
+          <ol class="pack__list mono" id="pack-list">
+            <li>Sony FX30</li>
+            <li>iPhone 18 Pro Max</li>
+            <li>Aputure и&nbsp;LightDome II</li>
+            <li>Стабилизатор DJI RS</li>
+            <li>DJI Mic</li>
+            <li>Штатив</li>
+          </ol>
+        </div>
+        <p class="pack__tag" id="pack-tag" aria-hidden="true"></p>
+        <p class="pack__status mono" id="pack-status" aria-hidden="true"></p>
+        <button class="btn btn--small pack__replay" id="pack-replay" type="button" hidden>Ещё салют</button>
+      </div>
+    </section>
+
+    <section class="gallery" id="works" aria-labelledby="gallery-title">
+      <div class="gallery__stage">
+        <div class="gallery__head">
+          <p class="label">Билет в&nbsp;галерею</p>
+          <h2 id="gallery-title">Работы</h2>
+          <a class="gallery__disk" href="https://disk.yandex.ru/d/Qmf7NYQ4vxci_g" target="_blank" rel="noopener">Больше работ на&nbsp;Яндекс Диске</a>
+        </div>
+        <ol class="gallery__track">
+          <li class="work" data-slug="crace">
+            <div class="work__frame"><video class="work__video" controls muted loop playsinline preload="none" poster="assets/works/crace/poster-960.jpg" aria-label="Уралхим CRACE, фрагмент работы"><source src="assets/works/crace/loop.mp4" type="video/mp4"></video></div>
+            <div class="work__label">
+              <h3 class="work__title">Уралхим CRACE</h3>
+              <p class="work__meta mono"><span class="tbc">Съёмка соревнований.</span></p>
+              <p class="work__row"><span class="work__key">Задача:</span> <span class="tbc">Уралхиму нужны были ролики с&nbsp;соревнований для соцсетей.</span></p>
+              <p class="work__row"><span class="work__key">Что делали:</span> <span class="tbc">4K, цвет по&nbsp;LUT, монтаж под бит.</span></p>
+              <p class="work__row"><span class="work__key">Итог:</span> <span class="tbc">6&nbsp;вертикальных роликов для соцсетей.</span></p>
+            </div>
+          </li>
+          <li class="work" data-slug="miu-miu-new-balance">
+            <div class="work__frame"><video class="work__video" controls muted loop playsinline preload="none" poster="assets/works/miu-miu-new-balance/poster-960.jpg" aria-label="MIU MIU × New Balance 530, фрагмент работы"><source src="assets/works/miu-miu-new-balance/loop.mp4" type="video/mp4"></video></div>
+            <div class="work__label">
+              <h3 class="work__title">MIU MIU × New Balance 530</h3>
+              <p class="work__meta mono">nolimit, YouTube-канал · Обзор, студия</p>
+              <p class="work__row"><span class="work__key">Задача:</span> <span class="tbc">Каналу nolimit нужен был обзор коллаборации в&nbsp;студии.</span></p>
+              <p class="work__row"><span class="work__key">Что делали:</span> <span class="tbc">Ведущий в&nbsp;студии, лампы в&nbsp;кадре, распаковка сверху, детали в&nbsp;макро.</span></p>
+              <p class="work__row"><span class="work__key">Итог:</span> <span class="tbc">Выпуск на&nbsp;14&nbsp;минут.</span></p>
+            </div>
+          </li>
+          <li class="work" data-slug="persona-grata">
+            <div class="work__frame"><video class="work__video" controls muted loop playsinline preload="none" poster="assets/works/persona-grata/poster-960.jpg" aria-label="«Персона Грата», фрагмент работы"><source src="assets/works/persona-grata/loop.mp4" type="video/mp4"></video></div>
+            <div class="work__label">
+              <h3 class="work__title">«Персона Грата»</h3>
+              <p class="work__meta mono">«Персона Грата» · Интервью, три ракурса</p>
+              <p class="work__row"><span class="work__key">Задача:</span> <span class="tbc">Интервью, в&nbsp;котором видно и&nbsp;ведущего, и&nbsp;гостью.</span></p>
+              <p class="work__row"><span class="work__key">Что делали:</span> <span class="tbc">Три ракурса: общий план на&nbsp;двоих и&nbsp;крупные планы, дневной свет студии.</span></p>
+              <p class="work__row"><span class="work__key">Итог:</span> <span class="tbc">В&nbsp;выпуске слышны ответы гостьи и&nbsp;видны её реакции.</span></p>
+            </div>
+          </li>
+          <li class="work work--v" data-slug="app-lite">
+            <div class="work__frame"><video class="work__video" controls muted loop playsinline preload="none" poster="assets/works/app-lite/poster-v.jpg" aria-label="App Lite, фрагмент работы"><source src="assets/works/app-lite/loop.mp4" type="video/mp4"></video></div>
+            <div class="work__label">
+              <h3 class="work__title">App Lite</h3>
+              <p class="work__meta mono">App Lite, белёвская пастила · Вертикальные ролики</p>
+              <p class="work__row"><span class="work__key">Задача:</span> <span class="tbc">Пастиле App Lite нужны были вертикальные ролики.</span></p>
+              <p class="work__row"><span class="work__key">Что делали:</span> <span class="tbc">В&nbsp;студии: фактура крупным планом, яблоки, ягоды, упаковка.</span></p>
+              <p class="work__row"><span class="work__key">Итог:</span> <span class="tbc">13&nbsp;вертикальных роликов.</span></p>
+            </div>
+          </li>
+          <li class="work" data-slug="rosatom-mediastation">
+            <div class="work__frame"><video class="work__video" controls muted loop playsinline preload="none" poster="assets/works/rosatom-mediastation/poster-960.jpg" aria-label="Росатом, «Медиастанция», фрагмент работы"><source src="assets/works/rosatom-mediastation/loop.mp4" type="video/mp4"></video></div>
+            <div class="work__label">
+              <h3 class="work__title">Росатом, «Медиастанция»</h3>
+              <p class="work__meta mono">Росатом · Обзорный ролик</p>
+              <p class="work__row"><span class="work__key">Задача:</span> <span class="tbc">Показать, как прошла «Медиастанция».</span></p>
+              <p class="work__row"><span class="work__key">Что делали:</span> <span class="tbc">Регистрация, сессии, награждение и&nbsp;общее фото.</span></p>
+              <p class="work__row"><span class="work__key">Итог:</span> <span class="tbc">Ролик на&nbsp;2&nbsp;минуты.</span></p>
+            </div>
+          </li>
+          <li class="work" data-slug="rosatom-tvel">
+            <div class="work__frame"><video class="work__video" controls muted loop playsinline preload="none" poster="assets/works/rosatom-tvel/poster-960.jpg" aria-label="Росатом × ТВЭЛ, фрагмент работы"><source src="assets/works/rosatom-tvel/loop.mp4" type="video/mp4"></video></div>
+            <div class="work__label">
+              <h3 class="work__title">Росатом × ТВЭЛ</h3>
+              <p class="work__meta mono">Росатом, ТВЭЛ · Обзорный ролик</p>
+              <p class="work__row"><span class="work__key">Задача:</span> <span class="tbc">Показать, как прошёл фестиваль ТВЭЛ.</span></p>
+              <p class="work__row"><span class="work__key">Что делали:</span> <span class="tbc">Аниматоры, игры, шоу на&nbsp;сцене и&nbsp;танцы.</span></p>
+              <p class="work__row"><span class="work__key">Итог:</span> <span class="tbc">Ролик на&nbsp;2&nbsp;минуты.</span></p>
+            </div>
+          </li>
+        </ol>
+        <div class="gallery__floor" aria-hidden="true"></div>
+        <canvas class="pixel gallery__guide" aria-hidden="true" hidden></canvas>
+        <canvas class="pixel gallery__walker" aria-hidden="true" hidden></canvas>
+        <button class="gallery__ticket" type="button" hidden aria-label="Билет на показ работ: войти в галерею">
+          <svg viewBox="0 0 9 9" aria-hidden="true"><path fill="#e0502a" d="M4 0h1v3H4zM4 6h1v3H4zM0 4h3v1H0zM6 4h3v1H6zM1 1h1v1H1zM2 2h1v1H2zM7 1h1v1H7zM6 2h1v1H6zM1 7h1v1H1zM2 6h1v1H2zM7 7h1v1H7zM6 6h1v1H6zM3 3h3v1H3zM3 5h3v1H3zM3 4h1v1H3zM5 4h1v1H5z"/></svg>
+          <span>Показ работ · вход</span>
+        </button>
+        <span class="gallery__puff" aria-hidden="true" hidden></span>
+      </div>
+    </section>
+
+    <section class="compare" id="compare" aria-labelledby="compare-title">
+      <h2 id="compare-title">Почему не&nbsp;снять самим</h2>
+      <ul class="compare__list">
+        <li class="compare__card"><p class="compare__way">Снять самим на&nbsp;телефон</p><p class="compare__cost">Звук гуляет, свет случайный, а&nbsp;монтаж съедает выходные.</p></li>
+        <li class="compare__card"><p class="compare__way">Нанять оператора и&nbsp;монтажёра</p><p class="compare__cost">Два подрядчика и&nbsp;два срока, а&nbsp;за&nbsp;итог не&nbsp;отвечает никто.</p></li>
+        <li class="compare__card"><p class="compare__way">Пойти в&nbsp;большой продакшн</p><p class="compare__cost">Менеджеры, брифы и&nbsp;чек, который сложно повторять каждый месяц.</p></li>
+        <li class="compare__card compare__card--us"><p class="compare__way">С&nbsp;нами</p><p class="compare__cost">Студия, съёмка, монтаж и&nbsp;рилсы в&nbsp;одних руках. На&nbsp;связи сразу Глеб.</p></li>
+      </ul>
+      <dl class="doubts">
+        <div class="doubts__item"><dt>Где снимать?</dt><dd>Студию подберём сами, <span class="tbc">можно и&nbsp;у&nbsp;вас</span>.</dd></div>
+        <div class="doubts__item"><dt>Сколько выйдет в&nbsp;итоге?</dt><dd><span class="tbc">Точную цену назовём до&nbsp;съёмки</span>, после пары вопросов.</dd></div>
+        <div class="doubts__item"><dt>А&nbsp;если не&nbsp;понравится?</dt><dd><span class="tbc">2&nbsp;круга правок</span> входят в&nbsp;цену.</dd></div>
+      </dl>
+    </section>
+
+    <section class="formats" id="formats" aria-labelledby="formats-title">
+      <div class="formats__head">
+        <h2 id="formats-title">Форматы и&nbsp;цены</h2>
+        <p class="formats__lead">Можно взять один формат или несколько.</p>
+      </div>
+      <div class="packages">
+        <article class="package" id="format-studio">
+          <div class="package__art"><canvas class="pixel package__icon" data-icon="camera" aria-hidden="true"></canvas></div>
+          <h3>Студийная съёмка</h3>
+          <p class="package__who mono"><canvas class="pixel package__avatar" data-member="gleb" aria-hidden="true"></canvas><span>Снимает Глеб</span></p>
+          <div class="package__body">
+            <p class="package__for">Для интервью, выпусков для YouTube и&nbsp;обзоров. Подкаст на&nbsp;несколько камер снимем на&nbsp;арендованной технике.</p>
+            <details class="package__more">
+              <summary>Подробнее</summary>
+              <h4 class="label package__label">Что входит</h4>
+              <ul class="package__list">
+                <li>Постановка света</li>
+                <li>Съёмка на&nbsp;Sony FX30</li>
+                <li>Запись звука</li>
+                <li>Монтаж, цветокоррекция и&nbsp;чистка звука</li>
+                <li><span class="tbc">3&nbsp;рилса</span> из&nbsp;выпуска</li>
+                <li><span class="tbc">2&nbsp;круга правок</span></li>
+              </ul>
+              <h4 class="label package__label">Что нужно от&nbsp;вас</h4>
+              <p>Тема и&nbsp;гость. Студию подберём сами, <span class="tbc">можно снять и&nbsp;у&nbsp;вас</span>. <span class="tbc">Вопросы можем составить вместе.</span></p>
+              <p class="package__not">Не подойдёт, если нужно много коротких роликов каждую неделю. Для этого есть «Мобильная съёмка» и&nbsp;«Ведение соцсетей».</p>
+            </details>
+          </div>
+          <div class="package__deal">
+            <p class="package__time">Выпуск через <span class="tbc">5&nbsp;рабочих дней</span> после съёмки.</p>
+            <p class="package__price">От&nbsp;<span class="tbc">25&nbsp;000&nbsp;₽</span> за&nbsp;выпуск</p>
+            <p class="package__terms">Зависит от&nbsp;часов съёмки, длины выпуска и&nbsp;числа рилсов. <span class="tbc">Аренда студии и&nbsp;дополнительных камер, если они нужны, оплачивается отдельно.</span></p>
+            <a class="btn btn--small package__btn" href="https://t.me/imglebsmirnov" rel="noopener">Обсудить студийную съёмку</a>
+          </div>
+        </article>
+        <article class="package" id="format-mobile">
+          <div class="package__art"><canvas class="pixel package__icon" data-icon="iphone" aria-hidden="true"></canvas></div>
+          <h3>Мобильная съёмка</h3>
+          <p class="package__who mono"><canvas class="pixel package__avatar" data-member="sonya" aria-hidden="true"></canvas><span>Снимает Соня</span></p>
+          <div class="package__body">
+            <p class="package__for">Для Reels, Shorts и&nbsp;VK Клипов. Этот формат дешевле студийной съёмки.</p>
+            <details class="package__more">
+              <summary>Подробнее</summary>
+              <h4 class="label package__label">Что входит</h4>
+              <ul class="package__list">
+                <li>Сценарий и&nbsp;зацепка в&nbsp;первые секунды для каждого рилса</li>
+                <li>Организация и&nbsp;съёмка на&nbsp;iPhone 18 Pro Max</li>
+                <li>Монтаж 9:16 под Reels, Shorts и&nbsp;VK Клипы</li>
+                <li><span class="tbc">2&nbsp;круга правок</span></li>
+              </ul>
+              <h4 class="label package__label">Что нужно от&nbsp;вас</h4>
+              <p>Решить, кто или что будет в&nbsp;кадре, и&nbsp;найти время на&nbsp;съёмку.</p>
+              <p class="package__not">Не подойдёт, если нужен длинный выпуск для YouTube. Для этого есть «Студийная съёмка».</p>
+            </details>
+          </div>
+          <div class="package__deal">
+            <p class="package__time">Рилсы через <span class="tbc">3&nbsp;рабочих дня</span> после съёмки.</p>
+            <p class="package__price">От&nbsp;<span class="tbc">5&nbsp;000&nbsp;₽</span> за&nbsp;рилс</p>
+            <p class="package__terms"><span class="tbc">Минимум 3&nbsp;рилса на&nbsp;съёмку.</span> Зависит от&nbsp;часов съёмки.</p>
+            <a class="btn btn--small package__btn" href="https://t.me/imglebsmirnov" rel="noopener">Обсудить мобильную съёмку</a>
+          </div>
+        </article>
+        <article class="package" id="format-smm">
+          <div class="package__art"><canvas class="pixel package__icon" data-badge="star" aria-hidden="true"></canvas></div>
+          <h3>Ведение соцсетей</h3>
+          <p class="package__who mono"><canvas class="pixel package__avatar" data-member="sonya" aria-hidden="true"></canvas><canvas class="pixel package__avatar" data-member="gleb" aria-hidden="true"></canvas><span>Ведут Соня и&nbsp;Глеб</span></p>
+          <div class="package__body">
+            <p class="package__for">Чтобы публикации в&nbsp;ваших соцсетях выходили по&nbsp;графику.</p>
+            <details class="package__more">
+              <summary>Подробнее</summary>
+              <h4 class="label package__label">Что входит</h4>
+              <ul class="package__list">
+                <li>План публикаций на&nbsp;месяц</li>
+                <li>Съёмка <span class="tbc">раз в&nbsp;месяц</span> и&nbsp;монтаж <span class="tbc">4&nbsp;рилсов</span></li>
+                <li>Публикация на&nbsp;<span class="tbc">одной или двух площадках на&nbsp;выбор</span></li>
+              </ul>
+              <h4 class="label package__label">Что нужно от&nbsp;вас</h4>
+              <p>Дать доступ к&nbsp;аккаунтам, утвердить план на&nbsp;месяц и&nbsp;найти время на&nbsp;съёмку. <span class="tbc">Комментарии и&nbsp;сообщения остаются за&nbsp;вами.</span></p>
+              <p class="package__not">Не подойдёт, если нужен один ролик или один выпуск. Для этого есть «Студийная съёмка» и&nbsp;«Мобильная съёмка».</p>
+            </details>
+          </div>
+          <div class="package__deal">
+            <p class="package__time">Работаем помесячно. План на&nbsp;первый месяц пришлём через <span class="tbc">3&nbsp;дня</span> после разговора.</p>
+            <p class="package__price">От&nbsp;<span class="tbc">50&nbsp;000&nbsp;₽</span> в&nbsp;месяц</p>
+            <p class="package__terms">Зависит от&nbsp;числа площадок, рилсов и&nbsp;съёмок.</p>
+            <a class="btn btn--small package__btn" href="https://t.me/imglebsmirnov" rel="noopener">Обсудить ведение соцсетей</a>
+          </div>
+        </article>
+        <article class="package" id="format-avatar">
+          <div class="package__art"><canvas class="pixel package__icon" data-badge="play" aria-hidden="true"></canvas></div>
+          <h3>ИИ-аватар</h3>
+          <p class="package__who mono"><canvas class="pixel package__avatar" data-member="gleb" aria-hidden="true"></canvas><canvas class="pixel package__avatar" data-member="sonya" aria-hidden="true"></canvas><span>Делают Глеб и&nbsp;Соня</span></p>
+          <div class="package__body">
+            <p class="package__for">Для экспертов и&nbsp;брендов, которым нужно много роликов без съёмки каждый раз.</p>
+            <details class="package__more">
+              <summary>Подробнее</summary>
+              <h4 class="label package__label">Что входит</h4>
+              <ul class="package__list">
+                <li>Запись исходного видео</li>
+                <li>Цифровой двойник: внешность и&nbsp;голос</li>
+                <li>Сценарии и&nbsp;ролики с&nbsp;аватаром</li>
+                <li>Монтаж 9:16 с&nbsp;субтитрами</li>
+              </ul>
+              <h4 class="label package__label">Что нужно от&nbsp;вас</h4>
+              <p>Записаться один раз и&nbsp;дать письменное согласие на&nbsp;использование вашего образа и&nbsp;голоса.</p>
+              <p class="package__not">Не подойдёт, если нужна живая съёмка с&nbsp;гостями. Для этого есть «Студийная съёмка».</p>
+            </details>
+          </div>
+          <div class="package__deal">
+            <p class="package__time">Аватар через <span class="tbc">5&nbsp;рабочих дней</span> после записи.</p>
+            <p class="package__price">От&nbsp;<span class="tbc">40&nbsp;000&nbsp;₽</span> за&nbsp;аватар</p>
+            <p class="package__terms">Ролики с&nbsp;аватаром <span class="tbc">от&nbsp;5&nbsp;000&nbsp;₽ за&nbsp;штуку, 10&nbsp;роликов в&nbsp;месяц от&nbsp;45&nbsp;000&nbsp;₽</span>.</p>
+            <a class="btn btn--small package__btn" href="https://t.me/imglebsmirnov" rel="noopener">Обсудить ИИ-аватар</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="contact" id="contact" aria-labelledby="contact-title">
+      <div class="contact__head">
+        <h2 id="contact-title">Расскажите о&nbsp;проекте в&nbsp;двух словах</h2>
+        <canvas class="pixel contact__gleb" aria-hidden="true"></canvas>
+        <p class="lead">Напишите, что снимаем, для чего и&nbsp;к&nbsp;какой дате. Если задача не&nbsp;похожа ни&nbsp;на&nbsp;один формат, всё равно пишите.</p>
+        <a class="btn" href="https://t.me/imglebsmirnov" rel="noopener">Обсудить съёмку</a>
+        <p class="contact__after">Откроется чат с&nbsp;Глебом в&nbsp;Telegram. <span class="tbc">Он ответит в&nbsp;течение дня</span> и&nbsp;после пары вопросов назовёт точную цену.</p>
+        <p class="mono contact__handle">@imglebsmirnov</p>
+      </div>
+    </section>
+  </main>
+
+  <a class="btn float-cta" id="float-cta" href="https://t.me/imglebsmirnov" rel="noopener" hidden><span class="float-cta__long">Обсудить съёмку</span><span class="float-cta__short">Написать</span></a>
+
+  <footer class="footer">
+    <p class="footer__brand"><img class="logo logo--light" src="assets/logo/salut-logo.svg" alt="SALUT"><img class="logo logo--dark" src="assets/logo/salut-logo-dark.svg" alt="SALUT"></p>
+    <p class="label">Глеб и&nbsp;Соня · Москва · <a href="https://t.me/imglebsmirnov" rel="noopener">Telegram @imglebsmirnov</a></p>
+  </footer>
+
+  <script type="module">
+    // A module that fails to download stays failed for this page, so on a lost request
+    // (busy local servers drop some of the first burst) the page reloads, up to three times.
+    import('./js/main.js').catch((error) => {
+      console.warn('[salut] scripts did not load', error);
+      try {
+        const tries = Number(sessionStorage.getItem('salut-retry') || 0);
+        if (tries < 3) {
+          sessionStorage.setItem('salut-retry', String(tries + 1));
+          window.location.reload();
+        }
+      } catch (storageError) {
+        console.warn('[salut] no retry, storage is blocked', storageError);
+      }
+    });
+  </script>
+</body>
+</html>

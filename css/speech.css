@@ -1,0 +1,111 @@
+/* Speech bubbles (js/speech.js): game dialogue boxes over the scenes. --p is one art px of the
+   scene in CSS px; the 2 art-px border with stepped corners is drawn with box shadows, the tail
+   and the ▼ are tiny pixel SVGs. */
+.speech {
+  position: absolute;
+  z-index: 4;
+  inset: 0;
+  pointer-events: none;
+}
+
+.bubble {
+  --p: 2px;
+  --b: calc(2 * var(--p));
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: min(17.5rem, var(--bubble-room, calc(100% - 16px)));
+  padding: calc(2 * var(--p) + 6px) calc(3 * var(--p) + 8px) calc(2 * var(--p) + 9px);
+  background: var(--bubble-bg);
+  color: var(--bubble-fg);
+  box-shadow:
+    0 calc(-1 * var(--b)) 0 0 var(--bubble-ink),
+    0 var(--b) 0 0 var(--bubble-ink),
+    0 0 0 var(--p) var(--bubble-ink),
+    calc(-1 * var(--b)) 0 0 0 var(--bubble-ink),
+    var(--b) 0 0 0 var(--bubble-ink);
+}
+
+.bubble__text {
+  font: 500 14px/20px var(--font); /* whole px line height keeps the bottom border on the grid */
+  letter-spacing: -0.005em;
+  text-wrap: balance;
+}
+
+.bubble__rest {
+  visibility: hidden;
+}
+
+.bubble svg {
+  position: absolute;
+  display: block;
+  overflow: visible;
+}
+
+.bubble__tail {
+  top: 100%;
+  left: calc(var(--tail-x, 50%) - 5 * var(--p));
+  width: calc(10 * var(--p));
+  height: calc(6 * var(--p));
+}
+
+.bubble.is-below .bubble__tail {
+  top: auto;
+  bottom: 100%;
+  transform: scaleY(-1);
+}
+
+.bubble__more {
+  right: calc(3 * var(--p) + 4px);
+  bottom: calc(var(--p) + 2px);
+  width: max(calc(5 * var(--p)), 10px);
+  height: max(calc(3 * var(--p)), 6px);
+  visibility: hidden;
+}
+
+.bubble.is-done .bubble__more {
+  visibility: visible;
+}
+
+.bubble__paper {
+  fill: var(--bubble-bg);
+}
+
+.bubble__ink {
+  fill: var(--bubble-ink);
+}
+
+@media (min-width: 700px) {
+  .bubble__text {
+    font-size: 15px;
+    line-height: 21px;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .bubble {
+    transform-origin: var(--tail-x, 50%) 100%;
+    animation: bubble-pop 0.18s steps(3, end) both;
+  }
+
+  .bubble.is-below {
+    transform-origin: var(--tail-x, 50%) 0;
+  }
+
+  .bubble.is-done .bubble__more {
+    animation: bubble-blink 1.1s steps(1, end) infinite;
+  }
+}
+
+@keyframes bubble-pop {
+  from {
+    opacity: 0;
+    transform: scale(0.84);
+  }
+}
+
+@keyframes bubble-blink {
+  50% {
+    opacity: 0;
+  }
+}

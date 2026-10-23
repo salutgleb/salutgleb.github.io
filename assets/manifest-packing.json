@@ -1,0 +1,315 @@
+{
+ "art_px": "1 PNG px = 1 art px; integer or nearest-neighbour scale, smoothing off",
+ "source": "assets/raw/packing_room_chatgpt_v1*.png, tools/runner/*.py",
+ "plate": {
+  "file": "sprites/packing/room.png",
+  "w": 421,
+  "h": 306
+ },
+ "items": [
+  {
+   "id": "camera",
+   "label": "Sony FX30",
+   "caption": "Sony FX30 · основная камера",
+   "shelf": {
+    "file": "sprites/packing/item-camera.png",
+    "x": 77,
+    "y": 79,
+    "w": 24,
+    "h": 26
+   },
+   "carry": {
+    "file": "sprites/packing/carry-camera.png",
+    "w": 24,
+    "h": 18
+   },
+   "stand": [
+    92,
+    207
+   ],
+   "face": "nw",
+   "in_box": [
+    180,
+    213
+   ],
+   "icon": "sprites/icons/camera.png",
+   "icon_dark": "sprites/icons/camera-dark.png"
+  },
+  {
+   "id": "iphone",
+   "label": "iPhone 18 Pro Max",
+   "caption": "iPhone 18 Pro Max · камера для рилсов",
+   "shelf": {
+    "file": "sprites/packing/item-iphone.png",
+    "x": 111,
+    "y": 64,
+    "w": 17,
+    "h": 21
+   },
+   "carry": {
+    "file": "sprites/packing/carry-iphone.png",
+    "w": 12,
+    "h": 20
+   },
+   "stand": [
+    124,
+    200
+   ],
+   "face": "nw",
+   "in_box": [
+    230,
+    206
+   ],
+   "icon": "sprites/icons/iphone.png",
+   "icon_dark": "sprites/icons/iphone-dark.png"
+  },
+  {
+   "id": "light",
+   "label": "Aputure и LightDome II",
+   "caption": "Aputure с LightDome II · мягкий свет на лицо",
+   "shelf": {
+    "file": "sprites/packing/item-light.png",
+    "x": 276,
+    "y": 66,
+    "w": 54,
+    "h": 41
+   },
+   "carry": {
+    "file": "sprites/packing/carry-light.png",
+    "w": 53,
+    "h": 39
+   },
+   "stand": [
+    296,
+    203
+   ],
+   "face": "ne",
+   "in_box": [
+    188,
+    214
+   ],
+   "icon": "sprites/icons/light.png",
+   "icon_dark": "sprites/icons/light-dark.png"
+  },
+  {
+   "id": "gimbal",
+   "label": "Стабилизатор DJI RS",
+   "caption": "DJI RS · стабилизатор для съёмки на ходу",
+   "shelf": {
+    "file": "sprites/packing/item-gimbal.png",
+    "x": 96,
+    "y": 108,
+    "w": 35,
+    "h": 37
+   },
+   "carry": {
+    "file": "sprites/packing/carry-gimbal.png",
+    "w": 35,
+    "h": 36
+   },
+   "stand": [
+    110,
+    210
+   ],
+   "face": "nw",
+   "in_box": [
+    208,
+    211
+   ],
+   "icon": "sprites/icons/gimbal.png",
+   "icon_dark": "sprites/icons/gimbal-dark.png"
+  },
+  {
+   "id": "dji-mic",
+   "label": "DJI Mic",
+   "caption": "DJI Mic · беспроводные петлички",
+   "shelf": {
+    "file": "sprites/packing/item-dji-mic.png",
+    "x": 92,
+    "y": 175,
+    "w": 15,
+    "h": 10
+   },
+   "carry": {
+    "file": "sprites/packing/carry-dji-mic.png",
+    "w": 14,
+    "h": 9
+   },
+   "stand": [
+    96,
+    216
+   ],
+   "face": "nw",
+   "in_box": [
+    189,
+    216
+   ],
+   "icon": "sprites/icons/dji-mic.png",
+   "icon_dark": "sprites/icons/dji-mic-dark.png"
+  },
+  {
+   "id": "tripod",
+   "label": "Штатив",
+   "caption": "Штатив · держит камеру всю съёмку",
+   "shelf": {
+    "file": "sprites/packing/item-tripod.png",
+    "x": 360,
+    "y": 151,
+    "w": 23,
+    "h": 62
+   },
+   "carry": {
+    "file": "sprites/packing/carry-tripod-laid.png",
+    "w": 62,
+    "h": 23
+   },
+   "stand": [
+    348,
+    223
+   ],
+   "face": "ne",
+   "in_box": [
+    180,
+    218
+   ],
+   "icon": "sprites/icons/tripod.png",
+   "icon_dark": "sprites/icons/tripod-dark.png"
+  }
+ ],
+ "box": {
+  "region": [
+   148,
+   170,
+   128,
+   100
+  ],
+  "front": "sprites/packing/box-front.png",
+  "back": "sprites/packing/box-back.png",
+  "lid": {
+   "file": "sprites/packing/box-lid.png",
+   "cut": "sprites/packing/box-lid-cut.png",
+   "frames": 6
+  },
+  "closed": "sprites/packing/box-closed-cut.png",
+  "gone": "sprites/packing/box-gone.png",
+  "inside": [
+   [
+    169.3,
+    0
+   ],
+   [
+    252.7,
+    0
+   ],
+   [
+    252.7,
+    208.8
+   ],
+   [
+    252.3,
+    246.3
+   ],
+   [
+    208.5,
+    264.3
+   ],
+   [
+    168.5,
+    245.8
+   ],
+   [
+    169.3,
+    208.5
+   ]
+  ],
+  "mouth": [
+   211.0,
+   210.2
+  ],
+  "ground_y": 264,
+  "void": "sprites/packing/box-back-void.png"
+ },
+ "spots": {
+  "drop": {
+   "stand": [
+    212,
+    190
+   ],
+   "face": "s"
+  },
+  "home": {
+   "stand": [
+    212,
+    190
+   ],
+   "face": "s"
+  },
+  "safe": {
+   "stand": [
+    122,
+    232
+   ],
+   "face": "se"
+  }
+ },
+ "fuse": [
+  [
+   211,
+   209
+  ],
+  [
+   212,
+   205
+  ],
+  [
+   214,
+   201
+  ],
+  [
+   213,
+   198
+  ],
+  [
+   211,
+   196
+  ]
+ ],
+ "floor": [
+  [
+   24,
+   201
+  ],
+  [
+   70,
+   206
+  ],
+  [
+   165,
+   173
+  ],
+  [
+   200,
+   152
+  ],
+  [
+   250,
+   152
+  ],
+  [
+   252,
+   172
+  ],
+  [
+   340,
+   210
+  ],
+  [
+   404,
+   208
+  ],
+  [
+   210,
+   284
+  ]
+ ]
+}

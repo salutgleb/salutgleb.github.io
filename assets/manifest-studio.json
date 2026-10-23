@@ -1,0 +1,330 @@
+{
+  "size": [
+    238,
+    172
+  ],
+  "background": "transparent; designed for #eeeae2 and #151719",
+  "art_px": "1 PNG px = 1 art px; integer scale, smoothing off (2x on desktop)",
+  "layers": [
+    {
+      "id": "studio",
+      "file": "sprites/studio/studio.png",
+      "x": 0,
+      "y": 0,
+      "frames": 1,
+      "ms": 0
+    },
+    {
+      "id": "loop-rec",
+      "file": "sprites/studio/loop-rec.png",
+      "x": 104,
+      "y": 84,
+      "w": 4,
+      "h": 4,
+      "frames": 2,
+      "ms": 500,
+      "note": "camera tally, 1 Hz"
+    },
+    {
+      "id": "loop-expert",
+      "file": "sprites/studio/loop-expert.png",
+      "x": 136,
+      "y": 60,
+      "w": 22,
+      "h": 19,
+      "frames": 24,
+      "ms": 100,
+      "note": "talking: mouth, hand lift on stresses, one blink"
+    },
+    {
+      "id": "loop-monitor",
+      "file": "sprites/studio/loop-monitor.png",
+      "x": 173,
+      "y": 95,
+      "w": 18,
+      "h": 7,
+      "frames": 24,
+      "ms": 100,
+      "note": "the expert on the monitor; same 24 x 100 ms timeline as loop-expert, start together",
+      "sync": "loop-expert"
+    },
+    {
+      "id": "loop-operator",
+      "role": "idle",
+      "file": "sprites/studio/loop-operator.png",
+      "x": 63,
+      "y": 75,
+      "w": 41,
+      "h": 64,
+      "frames": 2,
+      "ms": 200,
+      "sequence": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        0
+      ],
+      "note": "Gleb filming, back to us; head dips to the flip screen; frames are opaque crops of the scene; cycle 2.0 s",
+      "poses": [
+        "back",
+        "back_dip"
+      ]
+    },
+    {
+      "id": "loop-tube",
+      "file": "sprites/studio/loop-tube.png",
+      "x": 137,
+      "y": 43,
+      "w": 2,
+      "h": 16,
+      "frames": 12,
+      "ms": 100,
+      "note": "tube light hum"
+    },
+    {
+      "id": "loop-plant",
+      "file": "sprites/studio/loop-plant.png",
+      "x": 194,
+      "y": 70,
+      "w": 37,
+      "h": 14,
+      "frames": 2,
+      "ms": 600,
+      "note": "leaf sway"
+    },
+    {
+      "id": "loop-vines",
+      "file": "sprites/studio/loop-vines.png",
+      "x": 88,
+      "y": 51,
+      "w": 9,
+      "h": 15,
+      "frames": 4,
+      "ms": 600,
+      "note": "shelf vines sway"
+    }
+  ],
+  "notes": {
+    "draw": "draw 'studio' (frames 1), then each loop's current frame at its x, y; loop frames are opaque crops of the finished scene and fully replace their box",
+    "reduced_motion": "draw 'studio' only (REC on, mouth closed)",
+    "phone_safe_area": [
+      70,
+      45,
+      130,
+      82
+    ],
+    "source": "faithful conversion of assets/raw/studio_scene_chatgpt.png at ~5 source px per art px",
+    "operator": "The operator is Gleb (23.10). loop-operator in layers is his idle (role idle). operator_loops hold his speech: play ONE operator loop at a time instead of loop-operator (same box, opaque crops, all from sprites/studio/operator-talk.png). Gleb 23.10: «руки поестественнее, улыбку сменяй имитацией речи», no finger to the lips, no body flip: only the head turns over his right shoulder and the mouth moves. «Салют!» plays wave; «Тихо, идёт запись.» plays shh then point; the long line plays talk; then turn_back once, then loop-operator again. Gesture loops play once and hold their last frame. Built by tools/runner/operator_redraw.py."
+  },
+  "operator_loops": [
+    {
+      "id": "operator-wave",
+      "role": "wave",
+      "file": "sprites/studio/operator-talk.png",
+      "x": 63,
+      "y": 75,
+      "w": 41,
+      "h": 64,
+      "frames": 6,
+      "ms": 100,
+      "sequence": [
+        0,
+        1,
+        2,
+        4,
+        3,
+        4,
+        2
+      ],
+      "durations": [
+        90,
+        100,
+        110,
+        110,
+        90,
+        120,
+        160
+      ],
+      "replaces": "loop-operator",
+      "note": "turns his head over the right shoulder (back, three quarters, profile; body and hand stay on the camera) and says «Салют!»; holds the profile with the mouth closed; cycle 0.78 s",
+      "poses": [
+        "back",
+        "three_quarter",
+        "profile",
+        "profile_half",
+        "profile_open",
+        "profile_blink"
+      ]
+    },
+    {
+      "id": "operator-shh",
+      "role": "shh",
+      "file": "sprites/studio/operator-talk.png",
+      "x": 63,
+      "y": 75,
+      "w": 41,
+      "h": 64,
+      "frames": 6,
+      "ms": 100,
+      "sequence": [
+        3,
+        2,
+        3,
+        2,
+        4,
+        2,
+        3,
+        2,
+        3,
+        2
+      ],
+      "durations": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "replaces": "loop-operator",
+      "note": "profile, talks quietly (mouth shapes only, no gesture) while «Тихо, идёт запись.» types; holds the closed mouth; cycle 1.0 s",
+      "poses": [
+        "back",
+        "three_quarter",
+        "profile",
+        "profile_half",
+        "profile_open",
+        "profile_blink"
+      ]
+    },
+    {
+      "id": "operator-point",
+      "role": "point",
+      "file": "sprites/studio/operator-talk.png",
+      "x": 63,
+      "y": 75,
+      "w": 41,
+      "h": 64,
+      "frames": 6,
+      "ms": 100,
+      "sequence": [
+        2,
+        5,
+        2
+      ],
+      "durations": [
+        700,
+        120,
+        400
+      ],
+      "replaces": "loop-operator",
+      "note": "profile, listens: one blink, mouth closed (after «Тихо, идёт запись.»); cycle 1.22 s",
+      "poses": [
+        "back",
+        "three_quarter",
+        "profile",
+        "profile_half",
+        "profile_open",
+        "profile_blink"
+      ]
+    },
+    {
+      "id": "operator-talk",
+      "role": "talk",
+      "file": "sprites/studio/operator-talk.png",
+      "x": 63,
+      "y": 75,
+      "w": 41,
+      "h": 64,
+      "frames": 6,
+      "ms": 100,
+      "sequence": [
+        4,
+        2,
+        3,
+        4,
+        2,
+        3,
+        2,
+        4,
+        3,
+        2,
+        4,
+        2,
+        3,
+        4,
+        2,
+        2
+      ],
+      "durations": [
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110,
+        110
+      ],
+      "replaces": "loop-operator",
+      "note": "profile, talks while the long line types («Гостю остаётся только говорить…»); holds the closed mouth; cycle 1.76 s",
+      "poses": [
+        "back",
+        "three_quarter",
+        "profile",
+        "profile_half",
+        "profile_open",
+        "profile_blink"
+      ]
+    },
+    {
+      "id": "operator-turn-back",
+      "role": "turn_back",
+      "file": "sprites/studio/operator-talk.png",
+      "x": 63,
+      "y": 75,
+      "w": 41,
+      "h": 64,
+      "frames": 6,
+      "ms": 100,
+      "sequence": [
+        2,
+        1,
+        0
+      ],
+      "durations": [
+        120,
+        120,
+        120
+      ],
+      "replaces": "loop-operator",
+      "note": "head back to the camera: profile, three quarters, back; continue with loop-operator (idle); cycle 0.36 s",
+      "poses": [
+        "back",
+        "three_quarter",
+        "profile",
+        "profile_half",
+        "profile_open",
+        "profile_blink"
+      ]
+    }
+  ]
+}
